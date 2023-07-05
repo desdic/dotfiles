@@ -1,0 +1,7 @@
+github/
+README.md
+LICENSE
+{{- if and (ne .chezmoi.hostname "ptah") (ne .chezmoi.hostname "hathor") }}
+.chef/
+.netrc
+{{- end }}
