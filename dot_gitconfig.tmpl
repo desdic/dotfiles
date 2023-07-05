@@ -34,9 +34,6 @@
 [init]
     templateDir = ~/.config/git/template/
 	  defaultBranch = main
-# Not sure but sometimes this does not work
-#[url "git@github.com:"]
-#    insteadOf = https://github.com/
 
 [includeIf "gitdir:~/git/"]
     path = ~/.gitconfig-work
@@ -46,5 +43,5 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/notes/"]
     path = ~/.gitconfig-personal
-[url "git@gitlab.one.com:"]
-	insteadOf = https://gitlab.one.com/
+[url "git@{{ .gitlabone }}:"]
+    insteadOf = https://{{ .gitlabone }}/
