@@ -1,0 +1,141 @@
+* {
+  font-size: 12px;
+  font-family: monospace;
+  padding: 0px;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: #292b2e;
+  color: #fdf6e3;
+}
+
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+#custom-space,
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+  font-size: 20px;
+  color: #292b2e;
+  background: #1a1a1a;
+}
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#clock.4,
+#pulseaudio,
+#wireplumber,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#disk,
+#idle_inhibitor,
+#custom-newmail,
+#custom-gpu,
+#tray {
+  background: #1a1a1a;
+}
+
+#workspaces button {
+  padding: 0 2px;
+  color: #fdf6e3;
+}
+#workspaces button.focused {
+  color: #268bd2;
+}
+#workspaces button.active {
+  background: #fab387;
+  color: #000000;
+}
+#workspaces button.active:hover {
+  background: #ffb387;
+  color: #000000;
+}
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+#workspaces button:hover {
+  background: #1a1a1a;
+  border: #1a1a1a;
+  /* padding: 0 3px; */
+}
+
+#workspaces button.urgent {
+    /* background-color: #eb4d4b; */
+    background-color: #f38ba8;
+}
+
+#idle_inhibitor.activated {
+  color: #f38ba8;
+}
+
+#idle_inhibitor.deactivated {
+  color: #cba6f7;
+}
+
+/* #custom-nowplaying {
+  font-size: 15px;
+} */
+
+#custom-nowplaying {
+  color: #89b4fa;
+}
+
+#custom-gpu {
+  color: #a6e3a1;
+}
+
+#custom-newmail {
+  color: #fab387;
+}
+
+#clock.4 {
+  color: #a6e3a1;
+}
+
+#pulseaudio {
+  color: #89b4fa;
+}
+#wireplumber {
+  color: #89b4fa;
+}
+#memory {
+  color: #89dceb;
+}
+#cpu {
+  color: #cba6f7;
+}
+#temperature {
+  color: #f5c2e7;
+}
+#temperature.critical {
+  color: #f38ba8;
+}
+#battery {
+  color: #859900;
+}
+#disk {
+  color: #fab387;
+}
+
+#clock.4,
+#pulseaudio,
+#wireplumber,
+#memory,
+#cpu,
+#battery,
+#custom-newmail,
+#custom-gpu,
+#temperature,
+#disk {
+  padding: 0 10px;
+}

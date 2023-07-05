@@ -1,0 +1,8 @@
+xkb_keymap {
+ xkb_keycodes  { include "evdev+aliases(qwerty)" };
+ xkb_types     { include "complete" };
+ xkb_compat    { include "complete" };
+ xkb_variant   { include "altgr-intl" };
+ xkb_symbols   { include "pc+us+inet(evdev)+group(alt_shift_toggle)+level3(ralt_switch)+capslock(escape)+compose(menu)+terminate(ctrl_alt_bksp)+local"};
+ xkb_geometry  { include "pc(pc105)" };
+};

@@ -1,0 +1,10 @@
+[Unit]
+Description=mailsync
+Wants=mailsync.timer
+
+[Service]
+Type=oneshot
+ExecStart=/home/kgn/bin/mailsync
+
+[Install]
+WantedBy=default.target

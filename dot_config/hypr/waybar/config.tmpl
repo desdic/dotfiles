@@ -1,0 +1,175 @@
+// -*- mode: json -*-
+
+{
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+
+  "modules-left": [
+    "wlr/workspaces",
+    "custom/right-arrow-dark"
+  ],
+  "modules-center": [
+    "custom/nowplaying"
+  ],
+  "modules-right": [
+    "custom/left-arrow-dark",
+    "custom/newmail",
+    "idle_inhibitor",
+{{ if eq .chezmoi.hostname "hathor" }}
+    "wireplumber",
+{{ else }}
+    "pulseaudio",
+{{ end }}
+    "memory",
+    "cpu",
+{{ if eq .chezmoi.hostname "hathor" }}
+    "custom/gpu",
+    "temperature",
+{{ end }}
+{{ if eq .chezmoi.hostname "ptah" }}
+    "battery",
+{{ end }}
+    "disk",
+
+    "clock#4",
+
+    "tray",
+    "custom/space"
+  ],
+
+  "custom/left-arrow-dark": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left-arrow-light": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right-arrow-dark": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right-arrow-light": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/space": {
+    "format": " ",
+    "tooltip": false
+  },
+  "wlr/workspaces": {
+    "format": "{name}",
+    "disable-scroll": true,
+    "on-click": "activate",
+    "sort-by-number": true
+  },
+  "clock#1": {
+    "format": "{:%a}",
+    "tooltip": false
+  },
+  "clock#2": {
+    "format": "{:%H:%M}",
+    "tooltip": false
+  },
+  "clock#3": {
+    "format": "{:%m-%d}",
+    "tooltip": false
+  },
+  "clock#4": {
+    "format": "{:%a %Y-%m-%d - %H:%M}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume:2}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-muted": "MUTE",
+    "format-icons": {
+      "headphones": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 5,
+    "on-click": "pamixer -t",
+    "on-click-right": "pavucontrol"
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "on-click": "pavucontrol",
+    "format-icons": ["", "", ""],
+    "scroll-step": 0.2
+  },
+{{ if eq .chezmoi.hostname "hathor" }}
+  "temperature": {
+    // "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": ["", "", ""]
+  },
+{{ end }}
+  "memory": {
+    "interval": 5,
+    "format": "Mem {}%"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "CPU {usage:2}%"
+  },
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "disk": {
+    "interval": 5,
+    "format": "Disk {free:2}",
+    "path": "/"
+  },
+  "tray": {
+    "icon-size":13
+  },
+  "idle_inhibitor": {
+    "format": "<span>{icon}</span>",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+  "custom/nowplaying": {
+    "interval": 2,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/waybar/nowplaying.sh"
+  },
+  "custom/newmail": {
+    "interval": 10,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/waybar/newmail"
+  },
+  "custom/gpu": {
+    "interval": 10,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/hypr/waybar/nvidiagpu.sh"
+  }
+}

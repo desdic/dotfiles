@@ -1,0 +1,60 @@
+
+function ne() {
+  cd ~/git/chef-repo/nodes && /sbin/fzf -m | /sbin/xargs /sbin/zsh -c '</dev/tty nvim "$@"' ignoreme
+}
+
+function cnodesfzf() {
+  ZLE_ENABLED=1
+  if [[ "${0}" == cnodesfzf ]]; then
+    ZLE_ENABLED=0
+  fi
+
+  local selected_host=$({~/git/chef-repo/scripts/cnodes & awk '{print $1}' ~/.ssh/known_hosts; }|sort|uniq|fzf +m --query "$LBUFFER" --prompt="SSH remote > " --color "prompt:#89b4fa")
+  if [ -n "$selected_host" ]; then
+    if [ ! -z "$TMUX" ]; then
+      WINDOWNAME=$(echo ${selected_host}|cut -d . -f1)
+      tmux rename-window -t work "${WINDOWNAME}"
+    fi
+    BUFFER="ssh ${selected_host}"
+    if [[ ${ZLE_ENABLED} -eq 1 ]]; then
+      zle accept-line
+    else
+      eval ${BUFFER}
+    fi
+  fi
+  if [[ ${ZLE_ENABLED} -eq 1 ]]; then
+    zle reset-prompt
+  fi
+}
+
+function wcd() {
+  local dir=$(find ~/git ~/git/cookbooks ~/src/private ~/.config -type d -mindepth 1 -maxdepth 1 -path ./.cache -prune -o -print 2> /dev/null | fzf +m --prompt="Directory >" --color "prompt:#cba6f7")
+  if [ -n "$dir" ]; then
+    if [ ! -z "$TMUX" ]; then
+      # BUFFER="tmux new-window -t work -n ${NAME} \"/bin/sh -c 'cd ${dir}; exec zsh'\""
+      NAME=$(basename $dir)
+      tmux rename-window -t work "${NAME}"
+    fi
+    BUFFER="cd $dir"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+
+function clint() {
+  docker run \
+    -v "$PWD:/workdir" \
+    -w /workdir \
+    harbor.one.com/standard-images/ci/onecom-kitchen-build:jammy-rootless \
+    rubocop --color
+}
+
+export GIT_AUTHOR_NAME="Kim Gert Nielsen"
+#export GIT_AUTHOR_EMAIL={{ .emailone }}
+#export GIT_COMMITTER_NAME="${GIT_AUTHOR_NAME}"
+#export GIT_COMMITTER_EMAIL="${GIT_AUTHOR_EMAIL}"
+export DEBFULLNAME="${GIT_AUTHOR_NAME}"
+export DEBEMAIL={{ .emailone | quote }}
+export DEBCHANGE_AUTO_NMU=no
+export ONECOMID={{ .onecomid }}
+export GOPRIVATE={{ .gitlabone | quote }}

@@ -1,0 +1,27 @@
+default-timeout=10000
+sort=-time
+layer=top
+background-color=#2e3440
+width=300
+height=110
+border-size=2
+border-color=#88c0d0
+border-radius=15
+icons=1
+max-icon-size=64
+markup=1
+group-by=app-name,category
+output=DP-1
+
+[urgency=low]
+border-color=#cccccc
+
+[urgency=normal]
+border-color=#d08770
+
+[urgency=high]
+border-color=#bf616a
+
+[app-name=Slack]
+default-timeout=15000
+on-notify=exec swaymsg '[app_id="Slack"] urgent enable'

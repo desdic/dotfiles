@@ -1,0 +1,42 @@
+# vim: filetype=neomuttrc
+# muttrc file for account greyhat
+set realname = "Kim Gert Nielsen"
+set from = {{ .emailgreyhat | quote }}
+set sendmail = "msmtp -a greyhat"
+alias me Kim Gert Nielsen <{{ .emailgreyhat }}>
+set folder = "/home/kgn/.local/share/mail/greyhat"
+set header_cache = /home/kgn/.cache/mutt-wizard/greyhat/headers
+set message_cachedir = /home/kgn/.cache/mutt-wizard/greyhat/bodies
+set mbox_type = Maildir
+
+set status_format="-%r-$from: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+
+bind index,pager gg noop
+bind index,pager g noop
+bind index,pager M noop
+bind index,pager C noop
+bind index gg first-entry
+# macro index o "<shell-escape>mailsync -V greyhat<enter>" "run mbsync to sync greyhat"
+unmailboxes *
+
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set postponed = ""
+set trash = "+Trash"
+mailboxes "=INBOX" "=Deleted Messages" "=Sent" "=Sent Messages" "=Spam" "=Trash" 
+macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
+macro index,pager Mi "<save-message>=INBOX<enter>" "move mail to inbox"
+macro index,pager Ci "<copy-message>=INBOX<enter>" "copy mail to inbox"
+macro index,pager gs "<change-folder>=Sent<enter>" "go to sent"
+macro index,pager Ms "<save-message>=Sent<enter>" "move mail to sent"
+macro index,pager Cs "<copy-message>=Sent<enter>" "copy mail to sent"
+macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
+macro index,pager Mt "<save-message>=Trash<enter>" "move mail to trash"
+macro index,pager Ct "<copy-message>=Trash<enter>" "copy mail to trash"
+macro index,pager gS "<change-folder>=Spam<enter>" "go to spam"
+macro index,pager MS "<save-message>=Spam<enter>" "move mail to spam"
+macro index,pager CS "<copy-message>=Spam<enter>" "copy mail to spam"
+
+macro index eT "<change-folder>=Trash<enter><delete-pattern>~A<enter>"
+
+set signature="~/.config/neomutt/signatures/3-greyhat.signature"

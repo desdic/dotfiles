@@ -1,0 +1,9 @@
+text/plain; $EDITOR %s ;
+text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+application/pdf; /usr/bin/zathura %s ; copiousoutput
+image/*; feh --scale-down --auto-zoom %s ; copiousoutput
+video/*; setsid mpv --quiet %s &; copiousoutput
+application/pgp-encrypted; gpg -d '%s'; copiousoutput;
+text/calendar; mutt-ics; copiousoutput
+application/ics; mutt-ics; copiousoutput
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;libreoffice %s; copiousoutput

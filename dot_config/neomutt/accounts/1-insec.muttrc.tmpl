@@ -1,0 +1,104 @@
+# vim: filetype=neomuttrc
+# muttrc file for account insec
+set realname = "Kim Nielsen"
+set from = {{ .emailinsec | quote }}
+set sendmail = "msmtp -a insec"
+alias me Kim Nielsen <{{ .emailinsec }}>
+set folder = "/home/kgn/.local/share/mail/insec"
+set header_cache = /home/kgn/.cache/mutt-wizard/insec/headers
+set message_cachedir = /home/kgn/.cache/mutt-wizard/insec/bodies
+set mbox_type = Maildir
+
+set status_format="-%r-$from: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+
+bind index,pager gg noop
+bind index,pager g noop
+bind index,pager e noop
+bind index,pager M noop
+bind index,pager C noop
+bind index gg first-entry
+# macro index o "<shell-escape>mailsync -V insec<enter>" "run mbsync to sync insec"
+unmailboxes *
+
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set postponed = "+Drafts"
+set trash = "+Trash"
+mailboxes "=INBOX"\
+  "=2023"\
+  "=2022"\
+  "=2021"\
+  "=2020"\
+  "=2019"\
+  "=2018"\
+  "=2017"\
+  "=2016"\
+  "=2015"\
+  "=2014"\
+  "=2013"\
+  "=2012"\
+  "=2011"\
+  "=2010"\
+  "=2009"\
+  "=2008"\
+  "=2007"\
+  "=2006"\
+  "=2005"\
+  "=2004"\
+  "=2003"\
+  "=2002"\
+  "=2001"\
+  "=Nabo"\
+  "=Kvitteringer"\
+  "=Koekken"\
+  "=Buy" "=Drafts" "=Junk"\
+  "=Read" "=Sendt post" "=Sent" "=Sent Messages"\
+  "=Trash" "=Spam"
+
+macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
+macro index,pager Mi "<save-message>=INBOX<enter>" "move mail to inbox"
+macro index,pager Ci "<copy-message>=INBOX<enter>" "copy mail to inbox"
+macro index,pager gs "<change-folder>=Sent<enter>" "go to sent"
+macro index,pager Ms "<save-message>=Sent<enter>" "move mail to sent"
+macro index,pager Cs "<copy-message>=Sent<enter>" "copy mail to sent"
+macro index,pager gd "<change-folder>=Drafts<enter>" "go to drafts"
+macro index,pager Md "<save-message>=Drafts<enter>" "move mail to drafts"
+macro index,pager Cd "<copy-message>=Drafts<enter>" "copy mail to drafts"
+macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
+macro index,pager Mt "<save-message>=Trash<enter>" "move mail to trash"
+macro index,pager Ct "<copy-message>=Trash<enter>" "copy mail to trash"
+macro index,pager gS "<change-folder>=Spam<enter>" "go to spam"
+macro index,pager MS "<save-message>=Spam<enter>" "move mail to spam"
+macro index,pager CS "<copy-message>=Spam<enter>" "copy mail to spam"
+macro index,pager gb "<change-folder>=Actions.Buy<enter>" "go to buy"
+macro index,pager Mb "<save-message>=Actions.Buy<enter>" "move to buy"
+macro index,pager gk "<change-folder>=Kvitteringer<enter>" "go to kvitteringer"
+
+macro index eT "<change-folder>=Trash<enter><delete-pattern>~A<enter>"
+
+macro index,pager \Cx ":set pgp_autosign=no signature='' crypt_replysign=no crypt_replysignencrypted=no autoedit=no fast_reply=yes  editor=\"/bin/true\"\n<tag-prefix><forward-message>submit.x1f9v2DO9H3bZ8SE@spam.spamcop.net\n<send-message>:set autoedit=yes signature='~/.config/mutt/signatures/1-insec.signature' crypt_replysign=yes crypt_replysignencrypted=yes fast_reply=no editor=\"/sbin/vim\"\n<delete-message><enter>" "Forward mail to SpamCop"
+
+#save-hook . '=Read'
+# Current year
+save-hook . =%[%Y]
+
+set signature="~/.config/neomutt/signatures/1-insec.signature"
+
+# GPG
+source ~/.config/neomutt/gpg.rc
+
+source ~/.config/neomutt/colors.muttrc
+
+send-hook "~f @insecurity.dk" set pgp_sign_as=4F8D28E5B4F333409CD516964C5700DC668E809E
+bind compose p pgp-menu
+macro compose Y pfy "send mail without GPG"
+set crypt_use_gpgme=yes
+set crypt_replysign=yes
+set crypt_replysignencrypted=yes
+set crypt_verify_sig=yes
+set pgp_use_gpg_agent = yes
+set pgp_verify_sig=yes
+set pgp_timeout=3600
+# set pgp_autosign=yes
+set crypt_autosign=yes
+set crypt_replyencrypt=yes

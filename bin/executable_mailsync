@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+# Sync mail
+
+pgrep -cu "$USER" >/dev/null || exit
+
+# No reason to sync if mutt is not started
+pidof neomutt >/dev/null || exit
+
+# Checks for internet connection and set notification script.
+ping -q -c 1 1.1.1.1 > /dev/null || exit
+
+echo " 🔃" > "/tmp/imapsyncicon_${USER}"
+
+# Run mbsync. You can feed this script different settings.
+if [ $# -eq 0 ]; then
+	mbsync -a
+else
+	mbsync "$@"
+fi
+
+rm -f "/tmp/imapsyncicon_${USER}"
+
+notmuch new 2>/dev/null
+
+#Create a touch file that indicates the time of the last run of mailsync
+touch "$HOME/.config/neomutt/.mailsynclastrun"

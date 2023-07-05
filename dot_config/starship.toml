@@ -1,0 +1,54 @@
+format = "$all"
+scan_timeout = 10
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+# Create a single line
+[line_break]
+disabled = true
+
+# Disable the package module, hiding it from the prompt completely
+[python]
+disabled = true
+
+[lua]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ruby]
+disabled = true
+
+[perl]
+disabled = true
+
+[golang]
+disabled = true
+
+[php]
+disabled = true
+
+[cmake]
+disabled = true
+
+[aws]
+disabled = true
+
+[c]
+disabled = true
+
+[rust]
+disabled = true
+
+[package]
+disabled = true
+
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"

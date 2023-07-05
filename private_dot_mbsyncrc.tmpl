@@ -1,0 +1,121 @@
+IMAPStore greyhat-remote
+Host {{ .imapserver }}
+Port  993
+User {{ .emailgreyhat }}
+PassCmd "pass mutt-wizard-greyhat"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore greyhat-local
+Subfolders Verbatim
+Path ~/.local/share/mail/greyhat/
+Inbox ~/.local/share/mail/greyhat/INBOX
+Flatten .
+
+Channel greyhat
+Expunge Both
+Far :greyhat-remote:
+Near :greyhat-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+# End profile
+
+IMAPStore lxc-remote
+Host {{ .imapserver }}
+Port  993
+User {{ .emaillxc }}
+PassCmd "pass mutt-wizard-lxc"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore lxc-local
+Subfolders Verbatim
+Path ~/.local/share/mail/lxc/
+Inbox ~/.local/share/mail/lxc/INBOX
+Flatten .
+
+Channel lxc
+Expunge Both
+Far :lxc-remote:
+Near :lxc-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+# End profile
+
+IMAPStore insec-remote
+Host {{ .imapserver }}
+Port  993
+User {{ .emailinsec }}
+PassCmd "pass mutt-wizard-insec"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore insec-local
+Subfolders Verbatim
+Path ~/.local/share/mail/insec/
+Inbox ~/.local/share/mail/insec/INBOX
+Flatten .
+
+Channel insec
+Expunge Both
+Far :insec-remote:
+Near :insec-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+# End profile
+
+
+IMAPStore dmarc-remote
+Host {{ .imapserver }}
+Port  993
+User {{ .emaildmarc }}
+PassCmd "pass mutt-wizard-dmarc"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore dmarc-local
+Subfolders Verbatim
+Path ~/.local/share/mail/dmarc/
+Inbox ~/.local/share/mail/dmarc/INBOX
+Flatten .
+
+Channel dmarc
+Expunge Both
+Far :dmarc-remote:
+Near :dmarc-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+# End profile
+
+
+IMAPStore one-remote
+Host {{ .imapserver }}
+Port  993
+User {{ .emailbone }}
+PassCmd "pass mutt-wizard-one"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore one-local
+Subfolders Verbatim
+Path ~/.local/share/mail/one/
+Inbox ~/.local/share/mail/one/INBOX
+Flatten .
+
+Channel one
+Expunge Both
+Far :one-remote:
+Near :one-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+# End profile

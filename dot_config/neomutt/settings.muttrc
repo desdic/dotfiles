@@ -1,0 +1,83 @@
+set date_format="%d/%m/%Y %T"
+set index_format="%2C %zs %?X?A& ? %-20.20D %-45.45F %s (%-4.4c)"
+# set sort = 'reverse-date'
+set sort = threads 
+set sort_aux = reverse-last-date-received
+set smtp_authenticators = 'gssapi:login'
+set query_command = "abook --mutt-query '%s'"
+set rfc2047_parameters = yes
+set sleep_time = 0		# Pause 0 seconds for informational messages
+set markers = no		# Disables the `+` displayed at line wraps
+set mark_old = no		# Unread mail stay unread until read
+set mime_forward = yes		# attachments are forwarded with mail
+set wait_key = no		# mutt won't ask "press key to continue"
+set fast_reply			# skip to compose when replying
+set fcc_attach			# save attachments with the body
+set forward_format = "Fwd: %s"	# format of subject when forwarding
+set forward_quote		# include message in forwards
+set reverse_name		# reply as whomever it was to
+set include			# include message in replies
+set mail_check=60 # to avoid lags using IMAP with some email providers (yahoo for example)
+set editor="nvim -c 'set tw=72 ft=mail noautoindent'"
+set quit=ask-yes
+set mailcap_path = ~/.mailcap
+
+auto_view text/html		# automatically show html (mailcap uses w3m)
+auto_view text/calendar application/ics
+auto_view application/pgp-encrypted
+alternative_order text/html text/plain text/enriched
+bind index,pager i noop
+bind index,pager g noop
+bind index \Cf noop
+
+# General rebindings
+bind attach <return> view-mailcap
+bind attach l view-mailcap
+bind editor <space> noop
+bind index G last-entry
+bind index gg first-entry
+bind pager,attach h exit
+bind pager j next-line
+bind pager k previous-line
+bind pager l view-attachments
+bind index D delete-message
+bind index U undelete-message
+bind index L limit
+bind index l display-message
+bind index <space> tag-entry
+# bind index \Ca "T.<enter>"
+
+#bind browser h goto-parent
+#macro browser h '<change-dir><kill-line>..<enter>' "Go to parent folder"
+bind index,pager H view-raw-message
+bind browser l select-entry
+bind pager,browser gg top-page
+bind pager,browser G bottom-page
+bind index,pager,browser d half-down
+bind index,pager,browser u half-up
+bind index,pager S sync-mailbox
+bind index,pager R group-reply
+bind index \031 previous-undeleted	# Mouse wheel
+bind index \005 next-undeleted		# Mouse wheel
+bind pager \031 previous-line		# Mouse wheel
+bind pager \005 next-line		# Mouse wheel
+bind editor <Tab> complete-query
+bind index,pager,attach,compose h "display-toggle-weed"
+
+# Use urlscan and not urlview
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# Sidebar mappings
+set sidebar_visible = yes
+set sidebar_width = 25
+set sidebar_short_path = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
