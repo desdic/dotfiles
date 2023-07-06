@@ -1,7 +1,7 @@
 [user]
     name = Kim Gert Nielsen
     email = {{ .emailone }}
-    signingkey = /home/kgn/.ssh/id_rsa_onecom
+    signingkey = /home/{{ .chezmoi.username }}/.ssh/id_rsa_onecom
 [commit]
     gpgsign = true
 [gpg]

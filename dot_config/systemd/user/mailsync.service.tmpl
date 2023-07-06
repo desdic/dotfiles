@@ -4,7 +4,7 @@ Wants=mailsync.timer
 
 [Service]
 Type=oneshot
-ExecStart=/home/kgn/bin/mailsync
+ExecStart=/home/{{ .chezmoi.username }}/bin/mailsync
 
 [Install]
 WantedBy=default.target

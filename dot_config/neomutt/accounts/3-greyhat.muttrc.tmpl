@@ -4,9 +4,9 @@ set realname = "Kim Gert Nielsen"
 set from = {{ .emailgreyhat | quote }}
 set sendmail = "msmtp -a greyhat"
 alias me Kim Gert Nielsen <{{ .emailgreyhat }}>
-set folder = "/home/kgn/.local/share/mail/greyhat"
-set header_cache = /home/kgn/.cache/mutt-wizard/greyhat/headers
-set message_cachedir = /home/kgn/.cache/mutt-wizard/greyhat/bodies
+set folder = "/home/{{ .chezmoi.username }}/.local/share/mail/greyhat"
+set header_cache = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/greyhat/headers
+set message_cachedir = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/greyhat/bodies
 set mbox_type = Maildir
 
 set status_format="-%r-$from: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"

@@ -4,9 +4,9 @@ set realname = "Kim Gert Nielsen"
 set from = {{ .emailone | quote }}
 set sendmail = "msmtp -a one"
 alias me Kim Gert Nielsen <{{ .emailone }}>
-set folder = "/home/kgn/.local/share/mail/one"
-set header_cache = /home/kgn/.cache/mutt-wizard/one/headers
-set message_cachedir = /home/kgn/.cache/mutt-wizard/one/bodies
+set folder = "/home/{{ .chezmoi.username }}/.local/share/mail/one"
+set header_cache = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/one/headers
+set message_cachedir = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/one/bodies
 set mbox_type = Maildir
 
 set status_format="-%r-$from: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"

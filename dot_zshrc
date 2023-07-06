@@ -79,19 +79,9 @@ export WORDCHARS=''
 autoload -U select-word-style
 select-word-style bash
 
-if [ "$XDG_SESSION_TYPE" = "x11" ]; then
-  xset s on
-  xset s 600
-  xkbset repeatkeys rate 600 25
-  if [ -n "${DISPLAY}" ]; then
-    xkbcomp -w0 -I"$HOME/.xkb" -R"$HOME/.xkb" keymap/custom "$DISPLAY" >/dev/null 2>&1
-  fi
-  setxkbmap -variant altgr-intl
-fi
-
 eval $(starship init zsh)
 
 export GPG_TTY=$(tty)
 export NODE_OPTIONS=--dns-result-order=ipv4first
 
-alias luamake=/home/kgn/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
+alias luamake=/home/${HOME}/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
