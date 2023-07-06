@@ -17,6 +17,10 @@ do
 done
 
 if [ ! -x /sbin/neomutt ]; then yay -SYg neomutt; fi
+if [ ! -x /sbin/bat ]; then 
+  yay -SYg bat
+  bat cache --build
+fi
 if [ ! -f /usr/share/peda/peda.py ]; then yay -SYg peda; fi
 if [ ! -d /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   yay -SYg oh-my-zsh-git

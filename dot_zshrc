@@ -39,6 +39,8 @@ if [ -f ~/.config/dircolors ]; then
     eval $(dircolors ~/.config/dircolors)
 fi
 
+export BAT_THEME="Catppuccin-mocha"
+
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 ssh-add -l | grep -q ED25519 || ssh-add ~/.ssh/id_rsa_onecom ~/.ssh/id_rsa ~/.ssh/id_ed25519
