@@ -1,9 +1,9 @@
 # vim: filetype=neomuttrc
 # muttrc file for account one
-set realname = "Kim Gert Nielsen"
+set realname = {{ .name | quote }}
 set from = {{ .emailone | quote }}
 set sendmail = "msmtp -a one"
-alias me Kim Gert Nielsen <{{ .emailone }}>
+alias me {{ .name }} <{{ .emailone }}>
 set folder = "/home/{{ .chezmoi.username }}/.local/share/mail/one"
 set header_cache = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/one/headers
 set message_cachedir = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/one/bodies

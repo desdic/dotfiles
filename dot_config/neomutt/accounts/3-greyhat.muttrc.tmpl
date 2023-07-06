@@ -1,9 +1,9 @@
 # vim: filetype=neomuttrc
 # muttrc file for account greyhat
-set realname = "Kim Gert Nielsen"
+set realname = {{ .name | quote }}
 set from = {{ .emailgreyhat | quote }}
 set sendmail = "msmtp -a greyhat"
-alias me Kim Gert Nielsen <{{ .emailgreyhat }}>
+alias me {{ .name }} <{{ .emailgreyhat }}>
 set folder = "/home/{{ .chezmoi.username }}/.local/share/mail/greyhat"
 set header_cache = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/greyhat/headers
 set message_cachedir = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/greyhat/bodies
