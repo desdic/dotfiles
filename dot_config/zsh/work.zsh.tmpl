@@ -1,6 +1,6 @@
 
 function ne() {
-  cd ~/git/chef-repo/nodes && /sbin/fzf -m | /sbin/xargs /sbin/zsh -c '</dev/tty nvim "$@"' ignoreme
+  cd ~/git/chef-repo && /sbin/fzf -m | /sbin/xargs /sbin/zsh -c '</dev/tty nvim "$@"' ignoreme
 }
 
 function cnodesfzf() {
@@ -45,11 +45,11 @@ function clint() {
   docker run \
     -v "$PWD:/workdir" \
     -w /workdir \
-    harbor.one.com/standard-images/ci/onecom-kitchen-build:jammy-rootless \
+    {{ .harborone }}/standard-images/ci/onecom-kitchen-build:jammy-rootless \
     rubocop --color
 }
 
-export GIT_AUTHOR_NAME="Kim Gert Nielsen"
+export GIT_AUTHOR_NAME={{ .name | quote}}
 #export GIT_AUTHOR_EMAIL={{ .emailone }}
 #export GIT_COMMITTER_NAME="${GIT_AUTHOR_NAME}"
 #export GIT_COMMITTER_EMAIL="${GIT_AUTHOR_EMAIL}"
