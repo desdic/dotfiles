@@ -1,4 +1,8 @@
 #!/bin/sh
 
 PATH=$PATH:/home/{{ .chezmoi.username }}/bin
-/sbin/alacritty --class mail -t mail -e /sbin/neomutt
+if [ -x /sbin/foot ]; then
+  /sbin/foot -a mail /sbin/neomutt
+else
+  /sbin/alacritty --class mail -t mail -e /sbin/neomutt
+fi
