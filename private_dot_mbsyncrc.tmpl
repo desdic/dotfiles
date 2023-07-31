@@ -3,7 +3,7 @@ Host {{ .imapserver }}
 Port  993
 User {{ .emailgreyhat }}
 PassCmd "pass mutt-wizard-greyhat"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore greyhat-local
@@ -27,7 +27,7 @@ Host {{ .imapserver }}
 Port  993
 User {{ .emaillxc }}
 PassCmd "pass mutt-wizard-lxc"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore lxc-local
@@ -51,7 +51,7 @@ Host {{ .imapserver }}
 Port  993
 User {{ .emailinsec }}
 PassCmd "pass mutt-wizard-insec"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore insec-local
@@ -76,7 +76,7 @@ Host {{ .imapserver }}
 Port  993
 User {{ .emaildmarc }}
 PassCmd "pass mutt-wizard-dmarc"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore dmarc-local
@@ -101,7 +101,7 @@ Host {{ .imapserver }}
 Port  993
 User {{ .emailbone }}
 PassCmd "pass mutt-wizard-one"
-SSLType IMAPS
+TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore one-local
