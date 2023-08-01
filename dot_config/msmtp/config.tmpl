@@ -44,4 +44,10 @@ from {{ .emailbone }}
 user {{ .emailbone }}
 passwordeval "pass mutt-wizard-one"
 
+account groupone
+host smtp.office365.com
+port 587
+from {{ .emailgroupone }}
+user {{ .emailgroupone }}
+passwordeval "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py --encryption-pipe 'gpg --encrypt --recipient 55C071C5578521447902FA57C8F3E09F8C1B97A2' /home/{{ .chezmoi.username}}/group.one-m365-oauth2-token"
 

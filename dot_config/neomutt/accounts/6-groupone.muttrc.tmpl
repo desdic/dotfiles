@@ -2,7 +2,7 @@
 # muttrc file for account groupone
 set realname = {{ .name | quote }}
 set from = {{ .emailgroupone | quote }}
-set sendmail = "msmtp -a one"
+set sendmail = "msmtp -a groupone"
 alias me {{ .name }} <{{ .emailgroupone }}>
 set folder = "/home/{{ .chezmoi.username }}/.local/share/mail/groupone"
 set header_cache = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/groupone/headers
@@ -23,7 +23,7 @@ set spoolfile = "+INBOX"
 set record = "+Sent"
 set postponed = "+Drafts"
 set trash = "+Trash"
-mailboxes "=INBOX"
+mailboxes "=INBOX" "=2023" "=Trash" "=Sent Items"
 #macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 #macro index,pager Mi "<save-message>=INBOX<enter>" "move mail to inbox"
 #macro index,pager Ci "<copy-message>=INBOX<enter>" "copy mail to inbox"
@@ -42,3 +42,12 @@ mailboxes "=INBOX"
 save-hook . =%[%Y]
 
 set signature="~/.config/neomutt/signatures/6-groupone-signature"
+
+set crypt_use_gpgme=no
+set crypt_replysign=no
+set crypt_replysignencrypted=no
+set crypt_verify_sig=no
+set pgp_use_gpg_agent = no
+set pgp_verify_sig=no
+set pgp_autosign=no
+set pgp_replyencrypt=no
