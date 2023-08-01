@@ -119,3 +119,28 @@ Create Both
 SyncState *
 MaxMessages 0
 # End profile
+
+IMAPStore groupone-remote
+Host outlook.office365.com
+Port  993
+User {{ .emailgroupone }}
+PassCmd "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py /home/{{ .chezmoi.username }}/group.one-m365-oauth2-token"
+AuthMechs XOAUTH2
+TLSType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore groupone-local
+Subfolders Verbatim
+Path ~/.local/share/mail/groupone/
+Inbox ~/.local/share/mail/groupone/INBOX
+Flatten .
+
+Channel groupone
+Expunge Both
+Far :groupone-remote:
+Near :groupone-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+# End profile
