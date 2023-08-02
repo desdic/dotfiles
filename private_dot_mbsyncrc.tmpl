@@ -124,7 +124,7 @@ IMAPStore groupone-remote
 Host outlook.office365.com
 Port  993
 User {{ .emailgroupone }}
-PassCmd "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py --encryption-pipe \"gpg --encrypt --recipient 55C071C5578521447902FA57C8F3E09F8C1B97A2\" /home/{{ .chezmoi.username }}/group.one-m365-oauth2-token/home/{{ .chezmoi.username }}/group.one-m365-oauth2-token"
+PassCmd "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py --encryption-pipe \"gpg --encrypt --recipient 55C071C5578521447902FA57C8F3E09F8C1B97A2\" /home/{{ .chezmoi.username }}/.password-store/group.one-m365-oauth2-token.gpg"
 AuthMechs XOAUTH2
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
