@@ -16,8 +16,10 @@ exec-once = systemctl --user restart wlr-brightness.service
 exec-once = /sbin/kanshi
 {{ end }}
 exec-once = ~/.config/hypr/waybar/launchwaybar.sh
-exec-once = swayidle timeout 300 'swaylock -c 000000'
-#exec-once = swayidle timeout 300 'swaylock -c 000000' timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+#exec-once = swayidle timeout 300 'swaylock -c 000000'
+
+exec-once = swayidle -w timeout 60 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'   timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'  before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
+
 {{ if eq .chezmoi.hostname "hathor" }}
 monitor = DP-2,3440x1440@143.923004,0x0,1
 
@@ -124,16 +126,14 @@ device:epic-mouse-v1 {
     sensitivity = -0.5
 }
 
-# misc {
-#     key_press_enables_dpms = false
-#     mouse_move_enables_dpms = true
-# }
+misc {
+  disable_hyprland_logo = false
+  disable_splash_rendering = false
+}
 
-# Example windowrule v1
-# windowrule = float, ^(kitty)$
-# Example windowrule v2
-# windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+windowrulev2 = bordercolor rgb(FF0000) rgb(880808),xwayland:1
+windowrulev2 = opacity 0.9,class:(Mumble)
+windowrulev2 = opacity 0.9,class:(Dino)
 
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
