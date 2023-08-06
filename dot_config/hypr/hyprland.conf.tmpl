@@ -14,12 +14,9 @@ exec-once = hyprpaper
 exec-once = blueman-applet
 exec-once = systemctl --user restart wlr-brightness.service
 exec-once = /sbin/kanshi
-exec-once = swayidle -w timeout 60 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'   timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'  before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
-{{ else }}
-exec-once = swayidle timeout 300 'swaylock -c 000000'
 {{ end }}
+exec-once = swayidle -w timeout 60 'swaylock -f --screenshots --indicator --indicator-radius 100 --indicator-thickness 7 --effect-pixelate 50 --effect-vignette 0.5:0.5  --ring-color 89b4fa  --key-hl-color fab387  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'   timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'  before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
 exec-once = ~/.config/hypr/waybar/launchwaybar.sh
-
 
 {{ if eq .chezmoi.hostname "hathor" }}
 monitor = DP-2,3440x1440@143.923004,0x0,1
@@ -172,7 +169,7 @@ bind = , XF86MonBrightnessDown, exec, brightnessctl set 10%-
 
 bind = SUPERSHIFT, B, pseudo, # dwindle
 bind = SUPERSHIFT, P, exec, ~/bin/bwmenuwofi
-bind = SUPERSHIFT, X, exec, /sbin/swaylock -c 000000
+bind = SUPERSHIFT, X, exec, /sbin/swaylock -f --screenshots --indicator --indicator-radius 100 --indicator-thickness 7 --effect-pixelate 50 --effect-vignette 0.5:0.5 --ring-color 89b4fa --key-hl-color fab387 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, h, movefocus, l
