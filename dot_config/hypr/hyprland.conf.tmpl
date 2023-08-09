@@ -15,7 +15,7 @@ exec-once = blueman-applet
 exec-once = systemctl --user restart wlr-brightness.service
 exec-once = /sbin/kanshi
 {{ end }}
-exec-once = swayidle -w timeout 60 'swaylock -f --screenshots --indicator --indicator-radius 100 --indicator-thickness 7 --effect-pixelate 50 --effect-vignette 0.5:0.5  --ring-color 89b4fa  --key-hl-color fab387  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'   timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'  before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
+exec-once = swayidle -w timeout 300 'swaylock -f --screenshots --indicator --indicator-radius 100 --indicator-thickness 7 --effect-pixelate 50 --effect-vignette 0.5:0.5  --ring-color 89b4fa  --key-hl-color fab387  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'   timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'  before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
 exec-once = ~/.config/hypr/waybar/launchwaybar.sh
 
 {{ if eq .chezmoi.hostname "hathor" }}
@@ -156,7 +156,8 @@ bind = $mainMod, bracketright, exec, playerctl -p spotify next
 bind = $mainMod, bracketleft, exec, playerctl -p spotify previous
 
 bind = $mainMod, s, exec,  hyprctl dispatch workspace 10; pidof spotify || /sbin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
-bind = $mainMod, g, exec, hyprctl dispatch workspace 9; pidof chromium || /sbin/chromium
+bind = $mainMod, g, exec, hyprctl dispatch workspace 9; pidof chrome || /sbin/google-chrome-stable
+bind = $mainMod, G, exec, hyprctl dispatch workspace 9; pidof chromium || /sbin/chromium
 bind = $mainMod, B, exec, hyprctl dispatch workspace 2; pidof neomutt || ~/bin/startmail.sh
 
 bind =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
