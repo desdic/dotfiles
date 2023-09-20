@@ -37,13 +37,6 @@ user {{ .emaildmarc }}
 domain greyhat.dk
 passwordeval "pass mutt-wizard-dmarc"
 
-account one
-host {{ .smtpserverone }}
-port 587
-from {{ .emailbone }}
-user {{ .emailbone }}
-passwordeval "pass mutt-wizard-one"
-
 account groupone
 host smtp.office365.com
 port 587

@@ -95,31 +95,6 @@ SyncState *
 MaxMessages 0
 # End profile
 
-
-IMAPStore one-remote
-Host {{ .imapserver }}
-Port  993
-User {{ .emailbone }}
-PassCmd "pass mutt-wizard-one"
-TLSType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-MaildirStore one-local
-Subfolders Verbatim
-Path ~/.local/share/mail/one/
-Inbox ~/.local/share/mail/one/INBOX
-Flatten .
-
-Channel one
-Expunge Both
-Far :one-remote:
-Near :one-local:
-Patterns * !"[Gmail]/All Mail"
-Create Both
-SyncState *
-MaxMessages 0
-# End profile
-
 IMAPStore groupone-remote
 Host outlook.office365.com
 Port  993
