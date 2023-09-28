@@ -1,2 +1,2 @@
 REGEXP (((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
-COMMAND /sbin/google-chrome-stable %s
+COMMAND /sbin/chromium %s

@@ -15,7 +15,7 @@ function highlight() {
     /usr/bin/grep -E --color=auto "$@|";
 }
 
-export BROWSER=/sbin/google-chrome-stable
+export BROWSER=/sbin/chromium
 export LESS=-Xr
 
 export EDITOR="nvim"
