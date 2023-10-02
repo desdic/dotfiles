@@ -50,11 +50,11 @@ function clint() {
 }
 
 export GIT_AUTHOR_NAME={{ .name | quote}}
-#export GIT_AUTHOR_EMAIL={{ .emailone }}
+#export GIT_AUTHOR_EMAIL={{ .emailgroupone }}
 #export GIT_COMMITTER_NAME="${GIT_AUTHOR_NAME}"
 #export GIT_COMMITTER_EMAIL="${GIT_AUTHOR_EMAIL}"
 export DEBFULLNAME="${GIT_AUTHOR_NAME}"
-export DEBEMAIL={{ .emailone | quote }}
+export DEBEMAIL={{ .emailgroupone | quote }}
 export DEBCHANGE_AUTO_NMU=no
 export ONECOMID={{ .onecomid }}
 export GOPRIVATE={{ .gitlabone | quote }}
