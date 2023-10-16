@@ -1,7 +1,7 @@
 export GOPATH=${HOME}/go
 
 PATH="${HOME}/bin:${HOME}/git/scripts:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/cinc-workstation/embedded/bin/"
-for p in /usr/bin/vendor_perl /usr/bin/core_perl ${GOPATH}/bin
+for p in /usr/bin/vendor_perl /usr/bin/core_perl ${GOPATH}/bin ~/git/core-tools/bin
 do
   if [ -d "${p}" ]; then
     PATH="${PATH}:${p}"
