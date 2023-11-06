@@ -11,6 +11,7 @@ exec-once = /sbin/wl-paste -pw /sbin/wl-copy
 exec-once = mako
 exec-once = hyprpaper
 exec-once = swayidle -w timeout 300 'swaylock -f --screenshots --indicator --indicator-radius 100 --indicator-thickness 7 --effect-pixelate 50 --effect-vignette 0.5:0.5  --ring-color 89b4fa  --key-hl-color fab387  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'   timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'  before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
+#exec-once = swayidle -w timeout 300 'swaylock -f --screenshots --indicator --indicator-radius 100 --indicator-thickness 7 --effect-pixelate 50 --effect-vignette 0.5:0.5  --ring-color 89b4fa  --key-hl-color fab387  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' lock 'swaylock -f  --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2' before-sleep 'swaylock  -f --screenshots  --clock  --indicator  --indicator-radius 100  --indicator-thickness 7   --effect-pixelate 50  --effect-vignette 0.5:0.5  --ring-color bb00cc  --key-hl-color 880033  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 2  --fade-in 0.2'
 {{ if eq .chezmoi.hostname "ptah" }}
 exec-once = blueman-applet
 exec-once = systemctl --user restart wlr-brightness.service
@@ -105,11 +106,11 @@ animations {
 
     bezier = myBezier, 0.05, 0.9, 0.1, 1.05
 
-    animation = windows, 1, 4, myBezier
+    animation = windows, 1, 2, myBezier
     # animation = windowsOut, 1, 4, default, popin 80%
     # animation = border, 1, 10, default
     # animation = borderangle, 1, 4, default
-    animation = fade, 1, 4, default
+    animation = fade, 1, 2, default
     animation = workspaces, 0, 2, default
 }
 
