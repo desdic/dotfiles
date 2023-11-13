@@ -36,18 +36,18 @@ env = GDK_BACKEND,wayland
 env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 env = QT_AUTO_SCREEN_SCALE_FACTOR,1
 {{ else if eq .chezmoi.hostname "ptah" }}
-monitor=DP-9,2560x1440@60,0x0,1
-monitor=eDP-1,3840x2400@60,2560x0,2
+monitor=desc:Dell Inc. DELL U2719DC 957GTS2,2560x1440@60,0x0,1
+monitor=desc:Samsung Display Corp. 0x4165,3840x2400@60,2560x0,2
 
 workspace = 1, monitor:DP-9,default:true
-workspace = 2, monitor:DP-9,default:true
 workspace = 3, monitor:DP-9,default:true
 workspace = 8, monitor:DP-9,default:true
 workspace = 9, monitor:DP-9,default:true
 workspace = 10, monitor:DP-9,default:true
-workspace = 5, monitor:eDP-1,default:true
-workspace = 6, monitor:eDP-1,default:true
-workspace = 7, monitor:eDP-1,default:true
+workspace = 5, monitor:DP-9,default:true
+workspace = 6, monitor:DP-9,default:true
+workspace = 7, monitor:DP-9,default:true
+workspace = 2, monitor:eDP*,default:true
 
 env = XCURSOR_SIZE,24
 {{ end }}
