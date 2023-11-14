@@ -167,8 +167,8 @@ bind = $mainMod, bracketright, exec, playerctl -p spotify next
 bind = $mainMod, bracketleft, exec, playerctl -p spotify previous
 
 bind = $mainMod, s, exec,  hyprctl dispatch workspace 10; pidof spotify || /sbin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
-bind = SUPERSHIFT, g, exec, hyprctl dispatch workspace 9; pidof chrome || /sbin/google-chrome-stable
-bind = $mainMod, g, exec, hyprctl dispatch workspace 9; pidof chromium || /sbin/chromium
+bind = $mainMod, g, exec, hyprctl dispatch workspace 9; pidof chrome || /sbin/google-chrome-stable
+bind = SUPERSHIFT, g, exec, hyprctl dispatch workspace 9; pidof chromium || /sbin/chromium
 bind = $mainMod, b, exec, hyprctl dispatch workspace 2; pidof neomutt || ~/bin/startmail.sh
 
 bind =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
