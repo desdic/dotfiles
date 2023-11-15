@@ -27,12 +27,6 @@
         "idle_inhibitor",
         "wireplumber",
         "group/hardware",
-{{ if eq .chezmoi.hostname "hathor" }}
-        "custom/gpu",
-        "temperature",
-{{ else }}
-        "battery", 
-{{ end }}
         "clock",
         "tray",
         "custom/space",
@@ -200,25 +194,32 @@
     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
+    "format": "/ {temperatureC}°C {icon}",
     "format-icons": ["", "", ""]
   },
   "custom/gpu": {
     "interval": 10,
-    "format": "{}",
+    "format": "/ {}",
     "max-length": 80,
     "escape": false,
     "exec": "$HOME/.config/hypr/waybar/nvidiagpu.sh"
   },
 {{ end }}
 
-    // Group Hardware
-    "group/hardware": {
-        "orientation": "horizontal",
-        "modules": [
-            "cpu",
-            "memory",
-            "disk"
-        ]
-    }
+  // Group Hardware
+  "group/hardware": {
+      "orientation": "horizontal",
+      "modules": [
+          "cpu",
+          "memory",
+          "disk",
+{{ if eq .chezmoi.hostname "hathor" }}
+          "custom/gpu",
+          "temperature",
+           "custom/space",
+{{ else }}
+          "battery", 
+{{ end }}
+      ]
+  }
 }

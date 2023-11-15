@@ -128,8 +128,6 @@ window#waybar.empty #window {
     margin-right: 0;
 }
 
-#temperature,
-#custom-gpu,
 #custom-nowplaying,
 #custom-newmail {
     margin-right: 20px;
@@ -147,11 +145,7 @@ window#waybar.empty #window {
     color: @iconcolor;
 }
 
-/* -----------------------------------------------------
- * Hardware Group
- * ----------------------------------------------------- */
-
-#disk,#memory,#cpu {
+#temperature, #custom-gpu, #disk,#memory,#cpu {
     margin:0px;
     padding:0px;
     color:@iconcolor;
