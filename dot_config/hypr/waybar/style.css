@@ -145,20 +145,12 @@ window#waybar.empty #window {
     color: @iconcolor;
 }
 
-#temperature, #custom-gpu, #disk,#memory,#cpu {
-    margin:0px;
-    padding:0px;
-    color:@iconcolor;
-}
 
-#memory {
-    margin-right:10px;
-}
-
-/* -----------------------------------------------------
- * Clock
- * ----------------------------------------------------- */
-
+#temperature,
+#custom-gpu,
+#disk,
+#memory,
+#cpu,
 #clock {
     background-color: @backgrounddark;
     /* font-size: 13px; */
