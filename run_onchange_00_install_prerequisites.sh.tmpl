@@ -11,12 +11,13 @@ if [ ! -x /sbin/yay ]; then
   makepkg -si
 fi
 
-for app in gdb neomutt urlscan urlview tmux zsh fuzzel mako msmtp foot wofi starship alacritty swappy slurp grim mbsync-git swaylock swayidle
+for app in gdb neomutt urlscan urlview tmux zsh fuzzel mako msmtp foot wofi starship alacritty swappy slurp grim mbsync-git swaylock swayidle wlogout swww
 do
   if [ ! -x /sbin/${app} ]; then yay -SYg ${app}; fi
 done
 
 if [ ! -x /sbin/google-chrome-stable ]; then yay -SYg google-chrome; fi
+if [ ! -x /sbin/wal ]; then yay -SYg python-pywal fi
 
 if [ ! -x /sbin/neomutt ]; then yay -SYg neomutt; fi
 if [ ! -x /sbin/bat ]; then 

@@ -1,155 +1,199 @@
 // -*- mode: json -*-
-
 {
-  "layer": "top",
-  "position": "top",
-  "height": 28,
+    "layer": "top",
+    "margin-top": 0,
+    "margin-bottom": 0,
 
-  "modules-left": [
-    "hyprland/workspaces",
-    // "wlr/workspaces",
-    "custom/right-arrow-dark"
-  ],
-  "modules-center": [
-    "custom/nowplaying"
-  ],
-  "modules-right": [
-    "custom/left-arrow-dark",
-    "custom/newmail",
-    "idle_inhibitor",
+    "layer": "top",
+    "height": 40,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+
+    // Modules Left
+    "modules-left": [
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+
+    // Modules Center
+    "modules-center": [
+      "custom/nowplaying"
+    ],
+
+    // Modules Right
+    "modules-right": [
+        "custom/newmail",
+        "idle_inhibitor",
+        "wireplumber",
+        "group/hardware",
 {{ if eq .chezmoi.hostname "hathor" }}
-    "wireplumber",
+        "custom/gpu",
+        "temperature",
 {{ else }}
-    "pulseaudio",
+        "battery", 
 {{ end }}
-    "memory",
-    "cpu",
-{{ if eq .chezmoi.hostname "hathor" }}
-    "custom/gpu",
-    "temperature",
-{{ end }}
-{{ if eq .chezmoi.hostname "ptah" }}
-    "battery",
-{{ end }}
-    "disk",
+        "clock",
+        "tray",
+        "custom/space",
+        "custom/exit",
+    ],
 
-    "clock#4",
 
-    "tray",
-    "custom/space"
-  ],
-  "custom/left-arrow-dark": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left-arrow-light": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right-arrow-dark": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right-arrow-light": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/space": {
-    "format": " ",
-    "tooltip": false
-  },
-  "wlr/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "  ",
-      "2": "  ",
-      "3": "  ",
-      "4": " 4 ",
-      "5": " 5 ",
-      "6": " 6 ",
-      "7": "  ",
-      "8": "  ",
-      "9": "  ",
-      "10": "  "
-    },
-    "disable-scroll": true,
+  // "hyprland/workspaces": {
+  //   "format": "{icon}",
+  //   "format-icons": {
+  //     "1": "  ",
+  //     "2": "  ",
+  //     "3": "  ",
+  //     "4": " 4 ",
+  //     "5": " 5 ",
+  //     "6": " 6 ",
+  //     "7": "  ",
+  //     "8": "  ",
+  //     "9": "  ",
+  //     "10": "  "
+  //   }
+
+
+  // Workspaces
+  "hyprland/workspaces" : {
     "on-click": "activate",
-    "sort-by-number": true
-  },
-  "hyprland/workspaces": {
-    "format": "{icon}",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
     "format-icons": {
-      "1": "  ",
-      "2": "  ",
-      "3": "  ",
-      "4": " 4 ",
-      "5": " 5 ",
-      "6": " 6 ",
-      "7": "  ",
-      "8": "  ",
-      "9": "  ",
-      "10": "  "
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent_workspaces": {
+      "*": 5
     }
   },
-  "clock#1": {
-    "format": "{:%a}",
+
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+      "Alacritty"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
+
+  // Power Menu
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
     "tooltip": false
   },
-  "clock#2": {
-    "format": "{:%H:%M}",
-    "tooltip": false
+
+  // System tray
+  "tray": {
+    //"icon-size": 21,
+    "spacing": 10
   },
-  "clock#3": {
-    "format": "{:%m-%d}",
-    "tooltip": false
-  },
-  "clock#4": {
+
+  // Clock
+  "clock": {
     "format": "{:%a %Y-%m-%d - %H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar": {
-      "mode"          : "year",
+      "mode"          : "week",
       "mode-mon-col"  : 3,
       "weeks-pos"     : "right",
       "on-scroll"     : 1,
       "on-click-right": "mode",
       "format": {
-        "months":     "<span color='#ffead3'><b>{}</b></span>",
         "days":       "<span color='#ecc6d9'><b>{}</b></span>",
         "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
         "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
-    },
-    "actions":  {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
     }
   },
-  "pulseaudio": {
-    "format": "{icon} {volume:2}%",
-    "format-bluetooth": "{icon}  {volume}%",
-    "format-muted": "MUTE",
-    "format-icons": {
-      "headphones": "",
-      "default": [
-        "",
-        ""
-      ]
-    },
-    "scroll-step": 5,
-    "on-click": "pamixer -t",
-    "on-click-right": "pavucontrol"
+
+  // CPU
+  "cpu": {
+    "format": "C {usage:2}% "
   },
+
+  // Memory
+  "memory": {
+    "format": "/ M {}%"
+  },
+
+  // Harddisc space used
+  "disk": {
+    "interval": 30,
+    "format": "/ D {percentage_used}% ",
+    "path": "/"
+  }, 
+
+  // Battery
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
+
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "",
     "on-click": "pavucontrol",
-    "format-icons": ["", "", ""],
+    "format-icons": ["", ""],
     "scroll-step": 0.2
   },
+
+  "idle_inhibitor": {
+    "format": "<span>{icon}</span>",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    },
+    "tooltip": false
+  },
+
+  "custom/nowplaying": {
+    "interval": 2,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/hypr/waybar/nowplaying.sh"
+  },
+
+  "custom/newmail": {
+    "interval": 10,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/hypr/waybar/newmail"
+  },
+
+  "custom/space": {
+    "format": " ",
+    "tooltip": false
+  },
+
 {{ if eq .chezmoi.hostname "hathor" }}
   "temperature": {
     // "thermal-zone": 2,
@@ -159,65 +203,22 @@
     "format": "{temperatureC}°C {icon}",
     "format-icons": ["", "", ""]
   },
-{{ end }}
-  "memory": {
-    "interval": 5,
-    "format": "Mem {}%"
-  },
-  "cpu": {
-    "interval": 5,
-    "format": "CPU {usage:2}%"
-  },
-  "battery": {
-    "bat": "BAT0",
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  "disk": {
-    "interval": 5,
-    "format": "Disk {free:2}",
-    "path": "/"
-  },
-  "tray": {
-    "icon-size":13
-  },
-  "idle_inhibitor": {
-    "format": "<span>{icon}</span>",
-    "format-icons": {
-      "activated": " ",
-      "deactivated": " "
-    }
-  },
-  "custom/nowplaying": {
-    "interval": 2,
-    "format": "{}",
-    "max-length": 80,
-    "escape": false,
-    "exec": "$HOME/.config/hypr/waybar/nowplaying.sh"
-  },
-  "custom/newmail": {
-    "interval": 10,
-    "format": "{}",
-    "max-length": 80,
-    "escape": false,
-    "exec": "$HOME/.config/waybar/newmail"
-  },
   "custom/gpu": {
     "interval": 10,
     "format": "{}",
     "max-length": 80,
     "escape": false,
     "exec": "$HOME/.config/hypr/waybar/nvidiagpu.sh"
-  }
+  },
+{{ end }}
+
+    // Group Hardware
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+            "disk"
+        ]
+    }
 }
