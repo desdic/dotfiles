@@ -1,3 +1,15 @@
+@import '../../../.cache/wal/colors-waybar.css';
+
+@define-color backgroundlight @color8;
+@define-color backgrounddark #FFFFFF;
+@define-color workspacesbackground1 @color8;
+@define-color workspacesbackground2 #FFFFFF;
+@define-color bordercolor @color8;
+@define-color textcolor1 @color8;
+@define-color textcolor2 #FFFFFF;
+@define-color textcolor3 #FFFFFF;
+@define-color iconcolor @color8;
+
 * {
     font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size:15px;
@@ -49,15 +61,17 @@ window#waybar {
     transition: all 0.3s ease-in-out;
     opacity:1.0;
 }
-#workspaces button.active:hover {
-    background: blue;
-}
 
 #workspaces button:hover {
     color: @textcolor1;
     background: @workspacesbackground2;
     border-radius: 15px;
     opacity:1.0;
+}
+
+#workspaces button.urgent {
+    /* background-color: #eb4d4b; */
+    background-color: #f38ba8;
 }
 
 /* -----------------------------------------------------
@@ -128,24 +142,13 @@ window#waybar.empty #window {
     margin-right: 0;
 }
 
+#tray,
+#battery,
+#idle_inhibitor,
+#wireplumber,
+#custom-exit,
 #custom-nowplaying,
-#custom-newmail {
-    margin-right: 20px;
-    /* font-size: 15px; */
-    font-size: 13px;
-    font-weight: bold;
-    opacity: 0.8;
-    color: @iconcolor;
-}
-
-#custom-exit {
-    margin: 0px 20px 0px 0px;
-    padding:0px;
-    font-size:16px;
-    color: @iconcolor;
-}
-
-
+#custom-newmail,
 #temperature,
 #custom-gpu,
 #disk,
@@ -153,43 +156,12 @@ window#waybar.empty #window {
 #cpu,
 #clock {
     background-color: @backgrounddark;
-    /* font-size: 13px; */
     color: @textcolor1;
     border-radius: 15px;
     padding: 1px 10px 0px 10px;
     margin: 6px 15px 6px 0px;
     opacity:0.8;
-    border:1px solid @bordercolor;   
-}
-
-/* -----------------------------------------------------
- * Pulseaudio
- * ----------------------------------------------------- */
-
-#idle_inhibitor,
-#wireplumber {
-    background-color: @backgroundlight;
-    /* font-size: 15px; */
-    color: @textcolor2;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 8px 15px 8px 0px;
-    opacity:0.8;
-}
-
-
-/* -----------------------------------------------------
- * Battery
- * ----------------------------------------------------- */
-
-#battery {
-    background-color: @backgroundlight;
-    /* font-size: 15px; */
-    color: @textcolor2;
-    border-radius: 15px;
-    padding: 2px 15px 0px 10px;
-    margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    border:1px solid @bordercolor;
 }
 
 #battery.charging, #battery.plugged {
@@ -212,17 +184,6 @@ window#waybar.empty #window {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-/* -----------------------------------------------------
- * Tray
- * ----------------------------------------------------- */
-
-#tray {
-    background-color: @backgroundlight;
-    opacity:0.8;
-    transition-property: background-color;
-    transition-duration: .5s;
 }
 
 #tray > .passive {

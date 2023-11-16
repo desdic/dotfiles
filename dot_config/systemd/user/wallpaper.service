@@ -1,0 +1,10 @@
+[Unit]
+Description=Wallpaper
+Wants=wallpaper.timer
+
+[Service]
+Type=oneshot
+ExecStart=/home/kgn/.config/hypr/changewallpaper.sh
+
+[Install]
+WantedBy=default.target

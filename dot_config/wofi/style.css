@@ -22,11 +22,11 @@
  /* Slide In */
  @keyframes slideIn {
     0% {
-       opacity: 0;
+       opacity: 0.9;
     }
 
     100% {
-       opacity: 0.9;
+       opacity: 1.0;
     }
  }
 
@@ -42,11 +42,11 @@
  /* Fade In */
  @keyframes fadeIn {
     0% {
-       opacity: 0;
+       opacity: 0.9;
     }
 
     100% {
-       opacity: 0.9;
+       opacity: 1.0;
     }
  }
 
