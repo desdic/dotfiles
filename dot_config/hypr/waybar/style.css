@@ -2,7 +2,7 @@
 
 @define-color backgroundlight @color8;
 @define-color backgrounddark #FFFFFF;
-@define-color workspacesbackground1 @color8;
+@define-color workspacesbackground1 @background;
 @define-color workspacesbackground2 #FFFFFF;
 @define-color bordercolor @color8;
 @define-color textcolor1 @color8;
@@ -80,7 +80,7 @@ window#waybar {
 
 tooltip {
     border-radius: 10px;
-    background-color: @backgroundlight;
+    background-color: @color12;
     opacity:0.8;
     padding:20px;
     margin:0px;
@@ -114,14 +114,14 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #taskbar {
-    background: @workspacesbackground2;
+    background: @background;
     margin: 6px 15px 6px 0px;
     padding:0px;
     border-radius: 15px;
     font-weight: normal;
     font-style: normal;
     opacity:0.8;
-    border: 3px solid @backgroundlight;
+    /* border: 2px solid @backgroundlight; */
 }
 
 #taskbar button {
@@ -155,13 +155,13 @@ window#waybar.empty #window {
 #memory,
 #cpu,
 #clock {
-    background-color: @backgrounddark;
+    background-color: @background;
     color: @textcolor1;
     border-radius: 15px;
     padding: 1px 10px 0px 10px;
     margin: 6px 15px 6px 0px;
     opacity:0.8;
-    border:1px solid @bordercolor;
+    /* border:1px solid @bordercolor; */
 }
 
 #battery.charging, #battery.plugged {

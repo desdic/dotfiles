@@ -5,7 +5,7 @@
     "margin-bottom": 0,
 
     "layer": "top",
-    "height": 40,
+    "height": 43,
     "margin-left": 0,
     "margin-right": 0,
     "spacing": 0,
@@ -51,7 +51,7 @@
        "9": "  ",
        "10": "  "
     },
-    "persistent_workspaces": {
+    "persistent-workspaces": {
       "*": 3
     }
   },
@@ -91,37 +91,40 @@
 
   // Clock
   "clock": {
-    "format": "{:%a %Y-%m-%d - %H:%M}",
+    "format": " {:%a %Y-%m-%d - %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click": "/sbin/google-chrome-stable --app=https://calendar.google.com/calendar/",
+    "on-click-right": "/sbin/google-chrome-stable --app=https://outlook.office.com/calendar/view/month",
     "calendar": {
-      "mode"          : "week",
+      "mode"          : "year",
       "mode-mon-col"  : 3,
       "weeks-pos"     : "right",
       "on-scroll"     : 1,
       "on-click-right": "mode",
       "format": {
-        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+          "months":     "<span color='#ffead3'><b>{}</b></span>",
+          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     }
   },
 
   // CPU
   "cpu": {
-    "format": "C {usage:2}% "
+    "format": " {usage:2}% "
   },
 
   // Memory
   "memory": {
-    "format": "M {}%"
+    "format": " {}%"
   },
 
   // Harddisc space used
   "disk": {
     "interval": 30,
-    "format": "D {percentage_used}% ",
+    "format": " {percentage_used}% ",
     "path": "/"
   }, 
 
@@ -133,7 +136,7 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": "  {capacity}%",
+    "format-charging": "{icon} {capacity}%",
     "format-plugged": "  {capacity}%",
     "format-alt": "{icon}  {time}",
     // "format-good": "", // An empty format will hide the module
@@ -163,7 +166,8 @@
     "format": "{}",
     "max-length": 80,
     "escape": false,
-    "exec": "$HOME/.config/hypr/waybar/nowplaying.sh"
+    "exec": "$HOME/.config/hypr/waybar/nowplaying.sh",
+    "tooltip": false
   },
 
   "custom/newmail": {
@@ -171,7 +175,10 @@
     "format": "{}",
     "max-length": 80,
     "escape": false,
-    "exec": "$HOME/.config/hypr/waybar/newmail"
+    "exec": "$HOME/.config/hypr/waybar/newmail",
+    "on-click": "/sbin/google-chrome-stable --app=https://mail.one.com",
+    "on-click-right": "/sbin/google-chrome-stable --app=https://outlook.office.com/mail",
+    "tooltip": false
   },
 
   "custom/space": {
@@ -185,15 +192,17 @@
     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""],
+    "tooltip": false
   },
   "custom/gpu": {
     "interval": 10,
     "format": "{}",
     "max-length": 80,
     "escape": false,
-    "exec": "$HOME/.config/hypr/waybar/nvidiagpu.sh"
+    "exec": "$HOME/.config/hypr/waybar/nvidiagpu.sh",
+    "tooltip": false
   },
 {{ end }}
 

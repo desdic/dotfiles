@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.hostname "hathor" }}
+monitor=desc:LG Electronics LG ULTRAGEAR 106NTQD8W884,highrr,auto,1
+{{ else if eq .chezmoi.hostname "ptah" }}
+monitor=desc:Dell Inc. DELL U2719DC 957GTS2,2560x1440@60,0x0,1
+monitor=desc:Samsung Display Corp. 0x4165,3840x2400@60,2560x0,2
+{{ end }}

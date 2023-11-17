@@ -4,7 +4,7 @@ Wants=wallpaper.timer
 
 [Service]
 Type=oneshot
-ExecStart=/home/kgn/.config/hypr/changewallpaper.sh
+ExecStart=/home/{{ .chezmoi.username }}/.config/hypr/scripts/changewallpaper.sh
 
 [Install]
 WantedBy=default.target

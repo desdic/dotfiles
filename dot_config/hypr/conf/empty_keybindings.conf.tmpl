@@ -1,0 +1,106 @@
+# See https://wiki.hyprland.org/Configuring/Keywords/ for more
+$mainMod = SUPER
+
+# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+bind = $mainMod, Return, exec, foot
+bind = $mainMod, BackSpace, exec, ~/bin/newsession.sh
+bind = $mainMod, Q, killactive, 
+bind = SUPERSHIFT, E, exit, 
+bind = $mainMod, F, fullscreen, 1
+bind = SUPERSHIFT, R, exec, hyprctl reload
+bind = $mainMod, V, togglesplit 
+bind = SUPERSHIFT, T, togglefloating, 
+bind = $mainMod, d, exec, fuzzel
+bind = , XF86AudioPlay, exec, playerctl -p spotify play-pause
+bind = $mainMod, p, exec, playerctl -p spotify play-pause
+bind = , XF86AudioNext, exec, playerctl -p spotify next
+bind = , XF86AudioPrev, exec, playerctl -p spotify previous
+bind = $mainMod, bracketright, exec, playerctl -p spotify next
+bind = $mainMod, bracketleft, exec, playerctl -p spotify previous
+
+bind = $mainMod, s, exec,  hyprctl dispatch workspace 10; pidof spotify || /sbin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+bind = $mainMod, g, exec, hyprctl dispatch workspace 9; pidof chrome || /sbin/google-chrome-stable
+bind = SUPERSHIFT, g, exec, hyprctl dispatch workspace 9; pidof chromium || /sbin/chromium
+bind = $mainMod, b, exec, hyprctl dispatch workspace 2; pidof neomutt || ~/bin/startmail.sh
+
+bind =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bind =, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bind =, XF86AudioMute, exec, wpctl set-mute  @DEFAULT_AUDIO_SINK@ toggle
+bind =, XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bind = , XF86MonBrightnessUp, exec, brightnessctl set 10%+
+bind = , XF86MonBrightnessDown, exec, brightnessctl set 10%-
+
+bind = SUPERSHIFT, B, pseudo, # dwindle
+bind = SUPERSHIFT, P, exec, ~/bin/bwmenuwofi
+bind = SUPERSHIFT, X, exec, /sbin/swaylock -f
+
+# Move focus with mainMod + arrow keys
+bind = $mainMod, h, movefocus, l
+bind = $mainMod, l, movefocus, r
+bind = $mainMod, k, movefocus, u
+bind = $mainMod, j, movefocus, d
+
+bind = SUPERSHIFT,h,movewindow,l
+bind = SUPERSHIFT,l,movewindow,r
+bind = SUPERSHIFT,k,movewindow,u
+bind = SUPERSHIFT,j,movewindow,d
+bind = $mainMod, T, togglesplit, # dwindle
+
+# Switch workspaces with mainMod + [0-9]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
+bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
+bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
+bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
+bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
+bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
+bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
+bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
+bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
+bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
+
+bind = ,Print, exec, grim -g "$(slurp)" - | swappy -f -
+
+{{ if eq .chezmoi.hostname "hathor" }}
+bind = $mainMod SHIFT, z, exec,  gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.startTalking
+bindr = $mainMod SHIFT, z, exec,  ~/bin/stopmumble.sh
+{{ end }}
+
+# Scroll through existing workspaces with mainMod + scroll
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+# Resize
+bind=ALT,R,submap,resize
+
+# will start a submap called "resize"
+submap=resize
+
+# sets repeatable binds for resizing the active window
+binde=,l,resizeactive,20 0
+binde=,h,resizeactive,-20 0
+binde=,k,resizeactive,0 -20
+binde=,j,resizeactive,0 20
+
+# use reset to go back to the global submap
+bind=,escape,submap,reset 
+
+# will reset the submap, meaning end the current one and return to the global one
+submap=reset
+

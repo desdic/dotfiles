@@ -1,0 +1,18 @@
+exec-once = ~/.config/hypr/scripts/xdg-portal-hyprland # reset XDPH for screenshare
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP # for XDPH
+exec-once = hyprctl setcursor Bibata-Modern-Ice 20 # set cursor
+exec-once = gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-dracula-dark' # set gtk icons
+exec-once = gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice' # set gtk cursor
+exec-once = gsettings set org.gnome.desktop.interface cursor-size 20 # set gtk cursor size
+exec-once = gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-B' # set gtk theme
+exec-once = /usr/lib/polkit-kde-authentication-agent-1 # authentication dialogue for GUI apps
+exec-once = /sbin/wl-paste -pw /sbin/wl-copy
+exec-once = mako
+exec-once = swww query || swww init
+exec-once = ~/.config/hypr/scripts/lockscreentime.sh
+exec-once = ~/.config/hypr/waybar/launchwaybar.sh
+{{ if eq .chezmoi.hostname "ptah" }}
+exec-once = blueman-applet
+exec-once = systemctl --user restart wlr-brightness.service
+{{ end }}
+
