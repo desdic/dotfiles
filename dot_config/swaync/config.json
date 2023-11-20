@@ -18,7 +18,7 @@
 	"notification-body-image-width": 200,
 	"timeout": 10,
 	"timeout-low": 5,
-	"timeout-critical": 0,
+	"timeout-critical": 20,
 	"notification-window-width": 500,
 	"keyboard-shortcuts": true,
 	"image-visibility": "when-available",
