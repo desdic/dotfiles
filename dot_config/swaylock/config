@@ -1,9 +1,4 @@
-ignore-empty-password
 font="Fira Sans Semibold"
-
-clock
-timestr=%R
-datestr=%a, %e of %B
 
 image=~/.cache/current_wallpaper.jpg
 
@@ -55,3 +50,10 @@ caps-lock-key-hl-color=ffffffFF
 caps-lock-bs-hl-color=ffffffFF
 disable-caps-lock-text
 text-caps-lock-color=ffffff
+
+# swaylock-effect specific
+ignore-empty-password
+clock
+timestr=%R
+datestr=%a, %e of %B
+
