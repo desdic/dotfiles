@@ -1,29 +1,19 @@
 #!/bin/bash
 
-DIST=$1
-DISTS=(jammy focal)
-CONFIG=
+DIST="*"
 
-if [[ -z ${DIST} ]]; then
-  for DIST in "${DISTS[@]}"; do
-    CONFIG=kitchen-build/.kitchen/build-systems-${DIST}.yml
-    if [[ -e ${CONFIG} ]]; then
-      echo "${DIST} exists"
-    fi
-
-  done
-else
-  CONFIG=kitchen-build/.kitchen/build-systems-${DIST}.yml
+if [ -n "$1" ]; then
+  DIST="$1"
 fi
 
-if [[ ! -e ${CONFIG} ]]; then
-  echo "${CONFIG} does not exist"
-  exit 1
-fi
+for config in $(find . -type f -iname "build-systems-${DIST}.yml"|sort -r)
+do
+  echo "logging into $config"
+  HOSTNAME=$(grep hostname: "${config}"|awk '{print $2}')
+  PORT=$(grep port: "${config}"|awk '{print $2}')
+  USERNAME=$(grep username: "${config}"|awk '{print $2}')
+  SSHKEY=$(grep ssh_key: "${config}"|awk '{print $2}'|sed 's/"//g')
 
-HOSTNAME=$(grep hostname "${CONFIG}"|awk '{print $2}')
-PORT=$(grep port "${CONFIG}"|awk '{print $2}')
-USERNAME=$(grep username "${CONFIG}"|awk '{print $2}')
-SSHKEY=$(grep ssh_key "${CONFIG}"|awk '{print $2}'|sed 's/"//g')
-
-ssh "${HOSTNAME}" -p "${PORT}" -l "${USERNAME}" -i "${SSHKEY}"
+  ssh -o StrictHostKeyChecking=no "${HOSTNAME}" -p "${PORT}" -l "${USERNAME}" -i "${SSHKEY}"
+  break
+done
