@@ -15,7 +15,8 @@ function cnodesfzf() {
       WINDOWNAME=$(echo ${selected_host}|cut -d . -f1)
       tmux rename-window -t work "${WINDOWNAME}"
     elif [ -n "$ZELLIJ" ]; then
-      zellij action rename-pane "${selected_host}"
+      zellij action rename-tab "${selected_host}" >/dev/null 2>&1
+      zellij action rename-pane "${selected_host}" >/dev/null 2>&1
     fi
     BUFFER="ssh ${selected_host}"
     if [[ ${ZLE_ENABLED} -eq 1 ]]; then
