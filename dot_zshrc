@@ -69,7 +69,7 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 zle -N cnodesfzf
-bindkey '^i' cnodesfzf
+bindkey '^x' cnodesfzf
 
 zle -N wcd
 bindkey '^f' wcd
