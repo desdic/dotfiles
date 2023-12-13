@@ -68,6 +68,10 @@ bindkey '^x^e' edit-command-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Redefine up/down
+bindkey "^J" down-line-or-search
+bindkey "^K" up-line-or-search
+
 zle -N cnodesfzf
 bindkey '^s' cnodesfzf
 

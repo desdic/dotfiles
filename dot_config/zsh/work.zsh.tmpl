@@ -11,9 +11,11 @@ function cnodesfzf() {
 
   local selected_host=$({~/git/chef-repo/scripts/cnodes & awk '{print $1}' ~/.ssh/known_hosts; }|sort|uniq|fzf +m --query "$LBUFFER" --prompt="SSH remote > " --color "prompt:#89b4fa")
   if [ -n "$selected_host" ]; then
-    if [ ! -z "$TMUX" ]; then
+    if [ -n "$TMUX" ]; then
       WINDOWNAME=$(echo ${selected_host}|cut -d . -f1)
       tmux rename-window -t work "${WINDOWNAME}"
+    elif [ -n "$ZELLIJ" ]; then
+      zellij action rename-pane "${selected_host}"
     fi
     BUFFER="ssh ${selected_host}"
     if [[ ${ZLE_ENABLED} -eq 1 ]]; then
