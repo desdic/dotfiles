@@ -12,9 +12,9 @@ case $? in
     if ${ZELLIJ} list-sessions|grep work|grep EXITED; then
       ${ZELLIJ} delete-session work
     fi
-    # sleep 1 hack to make zellij get correct size of window
+    # sleep hack to make zellij get correct size of window
     # https://github.com/zellij-org/zellij/issues/2799
-    /sbin/foot -a work zsh --login -c 'sleep 0.1;zellij --config ~/.config/zellij/config.kdl attach --create work'
+    /sbin/foot -a work zsh --login -c 'sleep 0.1;zellij attach --create work'
     ;;
   *)
     ${ZELLIJ} --session work action new-tab

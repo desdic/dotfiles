@@ -30,17 +30,29 @@ function cnodesfzf() {
 }
 
 function wcd() {
-  ~/bin/zcd.sh
-  #local dir=$(find ~/git ~/git/cookbooks ~/src/private ~/.config -type d -mindepth 1 -maxdepth 1 -path ./.cache -prune -o -print 2> /dev/null | fzf +m --prompt="Directory >" --color "prompt:#cba6f7")
-  #if [ -n "$dir" ]; then
-  #  if [ ! -z "$TMUX" ]; then
-  #    # BUFFER="tmux new-window -t work -n ${NAME} \"/bin/sh -c 'cd ${dir}; exec zsh'\""
-  #    NAME=$(basename $dir)
-  #    tmux rename-window -t work "${NAME}"
-  #  fi
-  #  BUFFER="cd $dir"
-  #  zle accept-line
-  #fi
+  local DIR=$(fd . --type directory ~/ ~/.config ~/git ~/git/cookbooks ~/src/private --maxdepth 1|fzf +m --prompt="directory > ")
+  if [ -z "$DIR" ]; then
+    exit 0
+  fi
+
+  if [ -n "$ZELLIJ" ]; then
+    LAYOUT=default
+    if [ -f "${CHOICE}/Makefile" ]; then
+      LAYOUT=development
+    elif [ -f "${CHOICE}/.kitchen.yml" ]; then
+      LAYOUT=kitchen
+    fi
+
+    zellij --session work action new-tab --cwd "$DIR" --layout ${LAYOUT}
+
+  elif [ -n "$TMUX" ]; then
+    NAME=$(basename $DIR)
+    tmux rename-window -t work "${NAME}"
+    BUFFER="cd $DIR"
+  else
+    BUFFER="cd $DIR"
+  fi
+  zle accept-line
   zle reset-prompt
 }
 
