@@ -8,8 +8,13 @@ pgrep -a foot|grep -q zellij
 
 case $? in 
   1)
+    # I really don't want the last panes to persisist
+    if ${ZELLIJ} list-sessions|grep work|grep EXITED; then
+      ${ZELLIJ} delete-session work
+    fi
     # sleep 1 hack to make zellij get correct size of window
-    /sbin/foot -a work zsh --login -c 'sleep 1;zellij --config ~/.config/zellij/config.kdl attach --create work'
+    # https://github.com/zellij-org/zellij/issues/2799
+    /sbin/foot -a work zsh --login -c 'sleep 0.1;zellij --config ~/.config/zellij/config.kdl attach --create work'
     ;;
   *)
     ${ZELLIJ} --session work action new-tab

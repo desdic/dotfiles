@@ -3,10 +3,10 @@ layout {
     plugin location="zellij:tab-bar"
   }
   pane split_direction="vertical" {
-    pane size="60%"
+    pane size="60%" name="editor"
     pane split_direction="horizontal" {
-      pane
-      pane
+      pane name="login"
+      pane name="test"
     }
   }
   pane size=1 borderless=true {

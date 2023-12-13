@@ -3,6 +3,7 @@ keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        unbind "Ctrl o" // Disable sessions since I only use one
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
