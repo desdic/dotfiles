@@ -38,13 +38,17 @@ function wcd() {
 
   if [ -n "$ZELLIJ" ]; then
     LAYOUT=default
-    if [ -f "${CHOICE}/Makefile" ]; then
+    if [ -f "${DIR}/Makefile" ]; then
       LAYOUT=development
-    elif [ -f "${CHOICE}/.kitchen.yml" ]; then
+    elif [ -f "${DIR}/.kitchen.yml" ]; then
       LAYOUT=kitchen
     fi
 
-    zellij --session work action new-tab --cwd "$DIR" --layout ${LAYOUT}
+    if [ "$LAYOUT" = "default" ]; then
+      BUFFER="cd $DIR"
+    else
+      zellij --session work action new-tab --cwd "$DIR" --layout ${LAYOUT}
+    fi
 
   elif [ -n "$TMUX" ]; then
     NAME=$(basename $DIR)
