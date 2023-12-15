@@ -24,7 +24,7 @@ if [ -x "$(which nvim)" ]; then
 fi
 export VISUAL="${EDITOR}"
 export FCEDIT="${EDITOR}"
-alias view="$EDITOR} -M"
+alias view="${EDITOR} -M"
 alias rm='rm -i'
 
 export LSCOLORS="Exfxcxdxbxegedabagacad"
@@ -69,7 +69,7 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 zle -N cnodesfzf
-bindkey '^x' cnodesfzf
+#bindkey '^x' cnodesfzf
 
 zle -N wcd
 bindkey '^f' wcd

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Wofi extension for BitWarden-cli
+# Fuzzel extension for BitWarden-cli
 NAME="$(basename "$0")"
-VERSION="0.4"
-DEFAULT_CLEAR=5
+VERSION="0.5"
+DEFAULT_CLEAR=10
 BW_HASH=
 
 # Options
@@ -34,11 +34,14 @@ TYPE_IDENTITY=4
 WOFI_OPTIONS=()
 DEDUP_MARK="(+)"
 
-ASK_PASSWORD_COMMAND="wofi --dmenu -p \"Master Password\" --password --lines 1"
-SEARCH_COMMAND="wofi --dmenu -p Name -i"
+ASK_PASSWORD_COMMAND_WOFI="wofi --dmenu -p \"Master Password\" --password --lines 1"
+SEARCH_COMMAND_WOFI="wofi --dmenu -p Name -i"
 
 ASK_PASSWORD_COMMAND_ROFI="rofi -dmenu -p \"Master Password\" -password -lines 0"
 SEARCH_COMMAND_ROFI="rofi -dmenu -p Name -i -no-custom"
+
+ASK_PASSWORD_COMMAND="fuzzel --dmenu --prompt=\"Master Password: \" --password --lines=0 --log-level=none"
+SEARCH_COMMAND="fuzzel --dmenu --prompt \"Name: \" --log-level=none"
 
 ICON="/usr/share/icons/hicolor/64x64/apps/bitwarden.png"
 
@@ -73,9 +76,11 @@ get_session_key() {
 # source the hash file to gain access to the BitWarden CLI
 # Pre fetch all the items
 load_items() {
-	if ! ITEMS=$(bw list items --session "$BW_HASH" 2>/dev/null); then
-		exit_error $? "Could not load items"
-	fi
+	ITEMS=$(bw list items --session "$BW_HASH" 2>/dev/null)
+  # currently skip error checking since bw is currently broken
+	# if ! ITEMS=$(bw list items --session "$BW_HASH" 2>/dev/null); then
+	# 	exit_error $? "Could not load items"
+	# fi
 }
 
 exit_error() {
@@ -432,7 +437,7 @@ show_copy_notification() {
 
 parse_cli_arguments() {
 	# Use GNU getopt to parse command line arguments
-	if ! ARGUMENTS=$(getopt -o c:Cpui: -l icon:,auto-lock:,rofi,ask-password-command:,error-command:,search-command:,clear:,no-clear,show-password,password,user,help,version -- "$@"); then
+	if ! ARGUMENTS=$(getopt -o c:Cpui: -l icon:,auto-lock:,rofi,wofi,ask-password-command:,error-command:,search-command:,clear:,no-clear,show-password,password,user,help,version -- "$@"); then
 		exit_error 1 "Failed to parse command-line arguments"
 	fi
 	eval set -- "$ARGUMENTS"
@@ -487,6 +492,11 @@ parse_cli_arguments() {
 					  Search command: ${SEARCH_COMMAND_COMMAND_ROFI}
 					  Ask password command: ${ASK_PASSWORD_COMMAND_ROFI}
 
+				  --fuzzel
+				      Use rofi defaults for commands.
+					  Search command: ${SEARCH_COMMAND_COMMAND_FUZZEL}
+					  Ask password command: ${ASK_PASSWORD_COMMAND_FUZZEL}
+
 				  -i <PATH_TO_ICON>, --icon <PATH_TO_ICON>
 				      Specify path to icon, that will be used for notify-send
 
@@ -530,6 +540,11 @@ parse_cli_arguments() {
 		--rofi)
 			ASK_PASSWORD_COMMAND="$ASK_PASSWORD_COMMAND_ROFI"
 			SEARCH_COMMAND="$SEARCH_COMMAND_ROFI"
+			shift
+			;;
+		--wofi)
+			ASK_PASSWORD_COMMAND="$ASK_PASSWORD_COMMAND_WOFI"
+			SEARCH_COMMAND="$SEARCH_COMMAND_WOFI"
 			shift
 			;;
 		--ask-password-command)
