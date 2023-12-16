@@ -1,5 +1,5 @@
 # there should be no !# since we source this script to add it to our history
-local DIR=$(fd . --type directory ~/ ~/.config ~/git ~/git/cookbooks ~/src/private --maxdepth 1|fzf +m --prompt="directory > ")
+DIR=$(fd . --type directory ~/ ~/.config ~/git ~/git/cookbooks ~/src/private --maxdepth 1|fzf +m --prompt="directory > ")
   if [ -n "$ZELLIJ" ]; then
     LAYOUT=default
     if [ -f "${DIR}/Makefile" ]; then
