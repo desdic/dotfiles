@@ -5,7 +5,7 @@ Description=Update sshfzf cache
 Type=simple
 Restart=always
 RestartSec=1
-ExecStart=/home/kgn/bin/sshfzfupdatecache.sh
+ExecStart=/home//{{ .chezmoi.username }}/bin/sshfzfupdatecache.sh
 
 [Install]
 WantedBy=default.target
