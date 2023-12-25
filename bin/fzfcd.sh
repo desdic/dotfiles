@@ -1,6 +1,9 @@
 # there should be no !# since we source this script to add it to our history
 DIR=$(fd . --type directory ~/ ~/.config ~/git ~/git/cookbooks ~/src/private --maxdepth 1|fzf +m --prompt="directory > ")
-  if [ -n "$ZELLIJ" ]; then
+  if [ -n "$WEZTERM_PANE" ]; then
+    NAME=$(basename $DIR)
+    /sbin/wezterm cli set-tab-title "${NAME}"
+  elif [ -n "$ZELLIJ" ]; then
     LAYOUT=default
     if [ -f "${DIR}/Makefile" ]; then
       LAYOUT=development
