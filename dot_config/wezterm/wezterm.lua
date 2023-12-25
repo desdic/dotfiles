@@ -36,6 +36,7 @@ local config = {
 		{ key = "PageDown", mods = "NONE", action = act.ScrollByPage(1) },
 		{ key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
 		{ key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
+		{ key = "w", mods = "SHIFT|CTRL", action = act.CloseCurrentTab({ confirm = true }) },
 		{ key = "X", mods = "CTRL", action = act.ActivateCopyMode },
 		{ key = "X", mods = "SHIFT|CTRL", action = act.ActivateCopyMode },
 	},
