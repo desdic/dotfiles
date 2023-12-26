@@ -3,6 +3,7 @@ local act = wezterm.action
 
 local config = {
 	default_prog = { "/bin/zsh" },
+    front_end = "OpenGL",
 	scrollback_lines = 10000,
 	hyperlink_rules = wezterm.default_hyperlink_rules(),
 	font = wezterm.font_with_fallback({
