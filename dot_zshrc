@@ -81,7 +81,7 @@ export WORDCHARS=''
 autoload -U select-word-style
 select-word-style bash
 
-eval $(starship init zsh)
+eval "$(starship init zsh)"
 
 export GPG_TTY=$(tty)
 export NODE_OPTIONS=--dns-result-order=ipv4first
