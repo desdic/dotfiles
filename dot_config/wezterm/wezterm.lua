@@ -3,7 +3,7 @@ local act = wezterm.action
 
 local config = {
 	default_prog = { "/bin/zsh" },
-    front_end = "OpenGL",
+	front_end = "OpenGL",
 	scrollback_lines = 10000,
 	hyperlink_rules = wezterm.default_hyperlink_rules(),
 	font = wezterm.font_with_fallback({
@@ -13,6 +13,9 @@ local config = {
 	}),
 	font_size = 12,
 	color_scheme = "Catppuccin Mocha",
+	colors = {
+		background = "black",
+	},
 	tab_bar_at_bottom = true,
 
 	-- remove border
@@ -22,6 +25,16 @@ local config = {
 		bottom = 0,
 		top = 0,
 	},
+
+	unix_domains = {
+		{ name = "private" },
+		{ name = "work" },
+	},
+
+    -- search_editor = {
+    --     editor = {"/usr/bin/nvim"},
+    --     location = "NewTab"
+    -- },
 
 	-- disable all keybindings and define our own
 	disable_default_key_bindings = true,
@@ -38,8 +51,25 @@ local config = {
 		{ key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
 		{ key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
 		{ key = "w", mods = "SHIFT|CTRL", action = act.CloseCurrentTab({ confirm = true }) },
+		{ key = "C", mods = "CTRL", action = act.CopyTo("Clipboard") },
 		{ key = "X", mods = "CTRL", action = act.ActivateCopyMode },
-		{ key = "X", mods = "SHIFT|CTRL", action = act.ActivateCopyMode },
+		{ key = "F", mods = "CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
+		{
+			key = "O",
+			mods = "CTRL",
+			action = wezterm.action.QuickSelectArgs({
+				label = "open url",
+				patterns = {
+					"https?://\\S+",
+				},
+				action = wezterm.action_callback(function(window, pane)
+					local url = window:get_selection_text_for_pane(pane)
+					wezterm.log_info("opening: " .. url)
+					wezterm.open_with(url)
+				end),
+			}),
+		},
+		-- { key = "Y", mods = "CTRL", action = act.SearchViaEditor },
 	},
 
 	key_tables = {

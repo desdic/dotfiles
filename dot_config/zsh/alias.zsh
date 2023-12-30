@@ -10,4 +10,3 @@ alias tree='tree -C'
 alias s='source ~/bin/sshfzf.sh'
 alias f='source ~/bin/fzfcd.sh'
 alias k='~/bin/kitchenfzf.sh'
-alias v="$EDITOR"
