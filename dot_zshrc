@@ -68,12 +68,6 @@ bindkey '^x^e' edit-command-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-zle -N cnodesfzf
-#bindkey '^x' cnodesfzf
-
-zle -N wcd
-bindkey '^f' wcd
-
 # Turn ctrl+s off
 setopt no_flow_control
 
