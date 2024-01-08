@@ -68,8 +68,10 @@ bindkey '^x^e' edit-command-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-# Turn ctrl+s off
-setopt no_flow_control
+# Turn ctrl+s/ctrl+q off
+setopt noflowcontrol
+stty stop undef
+stty start undef
 
 export WORDCHARS=''
 autoload -U select-word-style
