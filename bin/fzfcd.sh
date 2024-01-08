@@ -1,5 +1,7 @@
 # there should be no !# since we source this script to add it to our history
 DIR=$(fd . --type directory ~/ ~/.config ~/git ~/git/cookbooks ~/src/private --maxdepth 1|fzf +m --prompt="directory > ")
+if [ -n "$DIR" ]; then
+
   if [ -n "$WEZTERM_PANE" ]; then
     NAME=$(basename $DIR)
     /sbin/wezterm cli set-tab-title "${NAME}"
@@ -22,6 +24,8 @@ DIR=$(fd . --type directory ~/ ~/.config ~/git ~/git/cookbooks ~/src/private --m
     tmux rename-window -t work "${NAME}"
   fi
 
-if [ -n "$DIR" ]; then
+  if [ -n "$DIR" ]; then
     cd $DIR
+  fi
+
 fi
