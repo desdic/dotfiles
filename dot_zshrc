@@ -58,7 +58,7 @@ if [ -d ~/.config/zsh ]; then
 fi
 
 # Keyboard bindings
-bindkey -e
+#bindkey -e
 
 # Enable CTRL+x-e to edit command line
 autoload -U edit-command-line
