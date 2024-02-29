@@ -59,6 +59,7 @@ fi
 
 # Keyboard bindings
 bindkey -e
+bindkey -r "\e'"
 
 # Enable CTRL+x-e to edit command line
 autoload -U edit-command-line

@@ -244,6 +244,26 @@
   background: @background;
 }
 
+.widget-buttons-grid {
+    font-size: initial;
+    color: @noti-border-color;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+    margin: 1px;
+    background: @noti-bg;
+    border-radius: 10px;
+    color: @text-color
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+    background: rgba(122, 162, 247, 0.1);
+    color: @text-color-alt
+}
+
 /* DND widget */
 .widget-dnd {
   margin: 8px;
