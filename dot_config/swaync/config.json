@@ -29,8 +29,7 @@
   "widgets": [
     "title",
     "dnd",
-    "notifications",
-    "buttons-grid"
+    "notifications"
   ],
   "widget-config": {
     "title": {
@@ -44,22 +43,6 @@
     "label": {
       "max-lines": 5,
       "text": "Label Text"
-    },
-    "buttons-grid": {
-      "actions": [
-        {
-          "label": "",
-          "command": "bash -c '~/bin/screenshot.sh & swaync-client -cp'"
-        },
-        {
-          "label": "",
-          "command": "/sbin/swaylock -f"
-        },
-        {
-          "label": "",
-          "command": "systemctl poweroff"
-        }
-      ]
     }
   }
 }

@@ -30,7 +30,8 @@
         "clock",
         "tray",
         "custom/notification",
-        "custom/space",
+        "custom/wlogout",
+        "custom/space"
     ],
 
   // Workspaces
@@ -238,5 +239,11 @@
           "battery", 
 {{ end }}
       ]
+  },
+
+  "custom/wlogout": {
+    "format": "  {}",
+      "on-click": "wlogout -p xdg -b 2 -T 300 -B 300 -R 800 -L 800",
+      "tooltip": false
   }
 }
