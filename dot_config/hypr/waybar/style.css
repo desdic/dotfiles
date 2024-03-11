@@ -155,6 +155,7 @@ window#waybar.empty #window {
 #disk,
 #memory,
 #cpu,
+#custom-wlogout,
 #clock {
     background-color: @background;
     color: @textcolor1;
