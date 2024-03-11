@@ -9,7 +9,11 @@ exec-once = /usr/lib/polkit-kde-authentication-agent-1 # authentication dialogue
 exec-once = /sbin/copyq
 exec-once = swaync
 exec-once = swww query || swww init
+{{ if eq .chezmoi.hostname "ptah" }}
 exec-once = hypridle
+{{ else }}
+exec-once = ~/.config/hypr/scripts/lockscreentime.sh
+{{ end }}
 exec-once = ~/.config/hypr/waybar/launchwaybar.sh
 exec-once = ~/.config/hypr/scripts/changewallpaper.sh
 {{ if eq .chezmoi.hostname "ptah" }}
