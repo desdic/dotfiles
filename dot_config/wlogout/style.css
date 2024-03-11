@@ -93,3 +93,9 @@ Buttons
 	border-radius: 20px;
 	background-image: image(url("icons/reboot.png"));
 }
+
+#screenshot {
+	margin: 10px;
+	border-radius: 20px;
+	background-image: image(url("icons/screenshot.png"));
+}
