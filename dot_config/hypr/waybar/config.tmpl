@@ -243,7 +243,12 @@
 
   "custom/wlogout": {
     "format": "  {}",
-      "on-click": "wlogout -p xdg -b 2",
+{{ if eq .chezmoi.hostname "hathor" }}
+      "on-click": "wlogout -p xdg -b 2 -T 300 -B 300 -R 800 -L 800",
+{{ else }}
+      "on-click": "wlogout -p xdg -b 2 -T 300 -B 300 -R 400 -L 400",
+{{ end }}
+          "battery", 
       "tooltip": false
   }
 }
