@@ -204,7 +204,7 @@
     "escape": true
   },
 
-{{ if eq .chezmoi.hostname "hathor" }}
+{{- if eq .chezmoi.hostname "hathor" }}
   "temperature": {
     // "thermal-zone": 2,
     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -222,7 +222,7 @@
     "exec": "$HOME/.config/hypr/waybar/nvidiagpu.sh",
     "tooltip": false
   },
-{{ end }}
+{{- end }}
 
   // Group Hardware
   "group/hardware": {
@@ -231,23 +231,23 @@
           "cpu",
           "memory",
           "disk",
-{{ if eq .chezmoi.hostname "hathor" }}
+{{- if eq .chezmoi.hostname "hathor" }}
           "custom/gpu",
           "temperature",
            "custom/space",
-{{ else }}
+{{- else }}
           "battery", 
-{{ end }}
+{{- end }}
       ]
   },
 
   "custom/wlogout": {
     "format": "  {}",
-{{ if eq .chezmoi.hostname "hathor" }}
+{{- if eq .chezmoi.hostname "hathor" }}
       "on-click": "wlogout -p xdg -b 2 -T 300 -B 300 -R 800 -L 800",
-{{ else }}
+{{- else }}
       "on-click": "wlogout -p xdg -b 2 -T 300 -B 300 -R 400 -L 400",
-{{ end }}
+{{- end }}
       "tooltip": false
   }
 }
