@@ -13,7 +13,7 @@ window {
 button {
   border-style: solid;
   color: white;
-  background-color: @color1;
+  background-color: @color4;
   border-width: 1px;
   background-repeat: no-repeat;
   background-position: center;
@@ -27,14 +27,14 @@ button {
 
 button:focus {
   color: white;
-  background-color: @color1;
+  background-color: @color4;
   background-size: 20%;
 }
 
 button:hover {
   color: white;
   border: 3px solid @foreground;
-  background-color: @color2;
+  background-color: @color1;
   background-size: 25%;
   border-radius: ${active_rad}px;
   animation: gradient_f 20s ease-in infinite;
