@@ -31,7 +31,7 @@ RES=$(${TMUX} ls -F "#{session_name}_#{?session_attached,attached,not_attached}"
 case ${RES} in
   work_attached)
     focus
-    ${TMUX} new-window -t work
+    ${TMUX} new-window -a -t work
     ;;
   work_not_attached)
     if [[ "${XDG_SESSION_TYPE}" == "wayland" ]]; then
