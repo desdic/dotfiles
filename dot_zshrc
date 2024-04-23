@@ -57,10 +57,10 @@ if [ -d ~/.config/zsh ]; then
   done
 fi
 
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-ZVM_CURSOR_STYLE_ENABLED=false
-
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# ZVM_CURSOR_STYLE_ENABLED=false
+#
+# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Keyboard bindings
 bindkey -e
