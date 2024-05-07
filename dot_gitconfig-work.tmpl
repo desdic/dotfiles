@@ -1,6 +1,6 @@
 [user]
     name = Kim Gert Nielsen
-    email = {{ .emailone }}
+    email = {{ (bitwarden "item" "de584f43-2bc2-4092-9d1c-b02100bfa9d6").login.username }}
     signingkey = /home/{{ .chezmoi.username }}/.ssh/id_rsa_onecom
 [commit]
     gpgsign = true

@@ -1,6 +1,6 @@
 [user]
     name = Kim Gert Nielsen
-    email = {{ .emailinsec }}
+    email = {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.username }}
     signingkey = 4F8D28E5B4F333409CD516964C5700DC668E809E
 [commit]
     gpgsign = true

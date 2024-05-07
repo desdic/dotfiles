@@ -1,0 +1,38 @@
+defaults
+auth	on
+tls	on
+tls_starttls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile	~/.config/msmtp/msmtp.log
+
+account greyhat
+host {{ .smtpserver }}
+port 587
+from {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.username }}
+user {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.username }}
+domain greyhat.dk
+password {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.password }}
+
+account lxc
+host {{ .smtpserver }}
+port 587
+from {{ (bitwarden "item" "ef74b952-4f57-4e92-86ab-ab76005e1d79").login.username }}
+user {{ (bitwarden "item" "ef74b952-4f57-4e92-86ab-ab76005e1d79").login.username }}
+domain lxc.dk
+password {{ (bitwarden "item" "ef74b952-4f57-4e92-86ab-ab76005e1d79").login.password }}
+
+account insec
+host {{ .smtpserver }}
+port 587
+from {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.username }}
+user {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.username }}
+domain insecurity.dk
+password {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.password }}
+
+account dmarc
+host {{ .smtpserver }}
+port 587
+from {{ (bitwarden "item" "ea685ca3-243f-45f7-9364-ab76005e06ba").login.username }}
+user {{ (bitwarden "item" "ea685ca3-243f-45f7-9364-ab76005e06ba").login.username }}
+domain greyhat.dk
+password {{ (bitwarden "item" "ea685ca3-243f-45f7-9364-ab76005e06ba").login.password }}

@@ -9,10 +9,10 @@ macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Ente
 macro index A "<limit>all\n" "show all messages (undo limit)"
 
 source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/1-insec.muttrc
-macro index,pager i1 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/1-insec.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ .emailinsec }}"
-macro index,pager i2 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/2-greyhat.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ .emailgreyhat }}"
-macro index,pager i3 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/3-lxc.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ .emaillxc }}"
-macro index,pager i4 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/4-dmarc.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ .emaildmarc }}"
+macro index,pager i1 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/1-insec.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.username }}"
+macro index,pager i2 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/2-greyhat.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.username }}"
+macro index,pager i3 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/3-lxc.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ (bitwarden "item" "ef74b952-4f57-4e92-86ab-ab76005e1d79").login.username }}"
+macro index,pager i4 '<sync-mailbox><enter-command>source /home/{{ .chezmoi.username }}/.config/neomutt/accounts/4-dmarc.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to {{ (bitwarden "item" "ea685ca3-243f-45f7-9364-ab76005e06ba").login.username }}"
 
 source ~/.config/neomutt/colors.muttrc
 

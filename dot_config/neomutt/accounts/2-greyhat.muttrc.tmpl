@@ -1,9 +1,9 @@
 # vim: filetype=neomuttrc
 # muttrc file for account greyhat
 set realname = {{ .name | quote }}
-set from = {{ .emailgreyhat | quote }}
+set from = {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.username | quote }}
 set sendmail = "msmtp -a greyhat"
-alias me {{ .name }} <{{ .emailgreyhat }}>
+alias me {{ .name }} <{{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.username }}>
 set folder = "/home/{{ .chezmoi.username }}/.local/share/mail/greyhat"
 set header_cache = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/greyhat/headers
 set message_cachedir = /home/{{ .chezmoi.username }}/.cache/mutt-wizard/greyhat/bodies
