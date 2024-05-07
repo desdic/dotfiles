@@ -1,8 +1,8 @@
 IMAPStore greyhat-remote
 Host {{ .imapserver }}
 Port  993
-User {{ .emailgreyhat }}
-PassCmd "pass mutt-wizard-greyhat"
+User {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.username }}
+Pass {{ (bitwarden "item" "aa6b14e3-8eed-4c63-9631-acc900995b44").login.password }}
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -25,8 +25,8 @@ MaxMessages 0
 IMAPStore lxc-remote
 Host {{ .imapserver }}
 Port  993
-User {{ .emaillxc }}
-PassCmd "pass mutt-wizard-lxc"
+User {{ (bitwarden "item" "ef74b952-4f57-4e92-86ab-ab76005e1d79").login.username }}
+Pass {{ (bitwarden "item" "ef74b952-4f57-4e92-86ab-ab76005e1d79").login.password }}
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -49,8 +49,8 @@ MaxMessages 0
 IMAPStore insec-remote
 Host {{ .imapserver }}
 Port  993
-User {{ .emailinsec }}
-PassCmd "pass mutt-wizard-insec"
+User {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.username }}
+Pass {{ (bitwarden "item" "8c702b13-488f-43ae-9f13-ab76005e3517").login.password }}
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -74,8 +74,8 @@ MaxMessages 0
 IMAPStore dmarc-remote
 Host {{ .imapserver }}
 Port  993
-User {{ .emaildmarc }}
-PassCmd "pass mutt-wizard-dmarc"
+User {{ (bitwarden "item" "ea685ca3-243f-45f7-9364-ab76005e06ba").login.username }}
+Pass {{ (bitwarden "item" "ea685ca3-243f-45f7-9364-ab76005e06ba").login.password }}
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -89,31 +89,6 @@ Channel dmarc
 Expunge Both
 Far :dmarc-remote:
 Near :dmarc-local:
-Patterns * !"[Gmail]/All Mail"
-Create Both
-SyncState *
-MaxMessages 0
-# End profile
-
-IMAPStore groupone-remote
-Host outlook.office365.com
-Port  993
-User {{ .emailgroupone }}
-PassCmd "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py --encryption-pipe \"gpg --encrypt --recipient 55C071C5578521447902FA57C8F3E09F8C1B97A2\" /home/{{ .chezmoi.username }}/.password-store/group.one-m365-oauth2-token.gpg"
-AuthMechs XOAUTH2
-TLSType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-MaildirStore groupone-local
-Subfolders Verbatim
-Path ~/.local/share/mail/groupone/
-Inbox ~/.local/share/mail/groupone/INBOX
-Flatten .
-
-Channel groupone
-Expunge Both
-Far :groupone-remote:
-Near :groupone-local:
 Patterns * !"[Gmail]/All Mail"
 Create Both
 SyncState *
