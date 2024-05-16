@@ -2,6 +2,7 @@ alias newlinestring='sed -e '\'':a'\'' -e '\''N'\'' -e '\''$!ba'\'' -e '\''s/\n/
 alias newlinecomma='sed -e '\'':a'\'' -e '\''N'\'' -e '\''$!ba'\'' -e '\''s/\n/,/g'\'
 alias newlinespace='sed -e '\'':a'\'' -e '\''N'\'' -e '\''$!ba'\'' -e '\''s/\n/\ /g'\'
 
+alias rm='rm -i'
 alias ls='/bin/ls -F --color=auto'
 alias lc='/bin/ls -F --color'
 alias grep='/usr/bin/grep --color=auto'

@@ -25,13 +25,8 @@ fi
 export VISUAL="${EDITOR}"
 export FCEDIT="${EDITOR}"
 alias view="${EDITOR} -M"
-alias rm='rm -i'
 
 export LSCOLORS="Exfxcxdxbxegedabagacad"
-
-export HISTFILE=~/.zsh_history
-export HISTSIZE=50000
-export SAVEHIST=50000
 
 export TERMINAL='foot'
 
@@ -47,9 +42,6 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
     ssh-add -l | grep -q ED25519 || ssh-add ~/.ssh/id_rsa_onecom ~/.ssh/id_ed25519
 fi
 
-unsetopt share_history
-unsetopt AUTO_CD
-
 if [ -d ~/.config/zsh ]; then
   for config in ~/.config/zsh/*.zsh
   do
@@ -57,14 +49,12 @@ if [ -d ~/.config/zsh ]; then
   done
 fi
 
-# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-# ZVM_CURSOR_STYLE_ENABLED=false
-#
-# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
 # Keyboard bindings
 bindkey -e
 bindkey -r "\e'"
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
 
 # Enable CTRL+x-e to edit command line
 autoload -U edit-command-line
