@@ -13,3 +13,4 @@ alias f='source ~/bin/fzfcd.sh'
 alias k='~/bin/kitchenfzf.sh'
 alias v='/usr/bin/nvim'
 alias ws='ssh work'
+alias vim=nvim

@@ -3,11 +3,11 @@ layout {
     plugin location="zellij:tab-bar"
   }
   pane split_direction="vertical" {
-    pane size="60%" name="editor"
     pane command="make" size="40%" name="test" {
       args "test"
       start_suspended true
     }
+    pane size="60%" name="editor" focus=true
   }
   pane size=1 borderless=true {
     plugin location="zellij:status-bar"

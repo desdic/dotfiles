@@ -2,6 +2,7 @@
 
 TMUX=/usr/bin/tmux
 HC=/usr/bin/hyprctl
+TERM=alacritty
 
 [ ! -x ${TMUX} ] && exit 1
 
@@ -31,20 +32,20 @@ RES=$(${TMUX} ls -F "#{session_name}_#{?session_attached,attached,not_attached}"
 case ${RES} in
   work_attached)
     focus
-    ${TMUX} new-window -a -t work
+    ${TMUX} -2 new-window -a -t work
     ;;
   work_not_attached)
-    if [[ "${XDG_SESSION_TYPE}" == "wayland" ]]; then
+    if [ "${TERM}" = "foot" ]; then
       /sbin/foot -a work ${TMUX} attach -t work
-    else
+    elif [ "${TERM}" = "alacritty" ]; then
       /sbin/alacritty --class work -e ${TMUX} attach -t work
     fi
     ;;
   *)
     ${TMUX} new-session -s work -d
-    if [[ "${XDG_SESSION_TYPE}" == "wayland" ]]; then
+    if [ "${TERM}" = "foot" ]; then
       /sbin/foot -a work ${TMUX} attach -t work
-    else
+    elif [ "${TERM}" = "alacritty" ]; then
       /sbin/alacritty --class work -e ${TMUX} attach -t work
     fi
     ;;
