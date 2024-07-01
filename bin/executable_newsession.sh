@@ -2,7 +2,7 @@
 
 TMUX=/usr/bin/tmux
 HC=/usr/bin/hyprctl
-TERM=alacritty
+TERM=foot
 
 [ ! -x ${TMUX} ] && exit 1
 

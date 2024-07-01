@@ -2,9 +2,8 @@
 $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, Return, exec, foot
-bind = $mainMod, BackSpace, exec, ~/bin/newsession_zellij.sh
-bind = $mainMod, Period, exec, ~/bin/newsession_zellij.sh -w
+bind = $mainMod, Return, exec, kitty
+bind = $mainMod, BackSpace, exec, ~/bin/newkitty.sh
 bind = $mainMod, Q, killactive, 
 bind = SUPERSHIFT, E, exit, 
 bind = $mainMod, F, fullscreen, 0
@@ -21,7 +20,7 @@ bind = , XF86AudioPrev, exec, playerctl -p spotify previous
 bind = $mainMod, bracketright, exec, playerctl -p spotify next
 bind = $mainMod, bracketleft, exec, playerctl -p spotify previous
 
-bind = $mainMod, s, exec,  hyprctl dispatch workspace 10; pidof spotify || /sbin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+bind = $mainMod, s, exec,  hyprctl dispatch workspace 10; pidof spotify || /sbin/spotify
 bind = $mainMod, g, exec, hyprctl dispatch workspace 9; pidof chrome || /sbin/google-chrome-stable
 bind = SUPERSHIFT, g, exec, hyprctl dispatch workspace 9; pidof chromium || /sbin/chromium
 bind = $mainMod, b, exec, hyprctl dispatch workspace 2; pidof neomutt || ~/bin/startmail.sh
