@@ -34,7 +34,7 @@ if [ -f ~/.config/dircolors ]; then
     eval $(dircolors ~/.config/dircolors)
 fi
 
-export BAT_THEME="Catppuccin-mocha"
+export BAT_THEME="Catppuccin Mocha"
 
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
