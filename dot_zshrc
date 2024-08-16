@@ -42,19 +42,11 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
     ssh-add -l | grep -q ED25519 || ssh-add ~/.ssh/id_rsa_onecom ~/.ssh/id_ed25519
 fi
 
-if [ -d ~/.config/zsh ]; then
-  for config in ~/.config/zsh/*.zsh
-  do
-    source $config
-  done
-fi
-
 # Keyboard bindings
 bindkey -e
 bindkey -r "\e'"
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-
 
 # Enable CTRL+x-e to edit command line
 autoload -U edit-command-line
@@ -75,7 +67,18 @@ export WORDCHARS=''
 autoload -U select-word-style
 select-word-style bash
 
-eval "$(starship init zsh)"
+if [ -x /sbin/oh-my-posh ]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin_mocha.omp.json)"
+elif [ -x /sbin/starship ]; then
+  eval "$(starship init zsh)"
+fi
+
+if [ -d ~/.config/zsh ]; then
+  for config in ~/.config/zsh/*.zsh
+  do
+    source $config
+  done
+fi
 
 export GPG_TTY=$(tty)
 export NODE_OPTIONS=--dns-result-order=ipv4first
