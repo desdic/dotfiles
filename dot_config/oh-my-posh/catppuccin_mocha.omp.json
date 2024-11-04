@@ -74,5 +74,7 @@
   ],
   "final_space": true,
   "version": 2,
-  "shell_integration": true
+  "shell_integration": true,
+  "disable_notice": true,
+  "auto_upgrade": false
 }
