@@ -118,10 +118,10 @@ end)
 config.keys = {
 	{ key = " ", mods = "SHIFT|CTRL", action = act.QuickSelect },
 	{ key = "e", mods = "CTRL|SHIFT", action = act({ EmitEvent = "trigger-nvim-with-scrollback" }) },
-	{ key = "h", mods = "ALT", action = act.ActivateTabRelative(-1) },
-	{ key = "l", mods = "ALT", action = act.ActivateTabRelative(1) },
-	{ key = "h", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
-	{ key = "l", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
+	{ key = "h", mods = "ALT|SHIFT", action = act.ActivateTabRelative(-1) },
+	{ key = "l", mods = "ALT|SHIFT", action = act.ActivateTabRelative(1) },
+	{ key = "h", mods = "SHIFT|ALT|CTRL", action = act.MoveTabRelative(-1) },
+	{ key = "l", mods = "SHIFT|ALT|CTRL", action = act.MoveTabRelative(1) },
 	{
 		key = "o",
 		mods = "CTRL|SHIFT",
