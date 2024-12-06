@@ -13,7 +13,9 @@ function fzgrep() {
 }
 
 if [ -x /sbin/fzf ]; then
-  if [ -x /sbin/ag ]; then
+  if [ -x /sbin/fd ]; then
+    export FZF_DEFAULT_COMMAND='fd --type f'
+  elif [ -x /sbin/ag ]; then
     export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -f -g ''"
   else
     export FZF_DEFAULT_COMMAND="find -L"
