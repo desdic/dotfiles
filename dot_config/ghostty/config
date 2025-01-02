@@ -1,0 +1,11 @@
+theme = catppuccin-mocha
+background=000000
+
+font-family = JetbrainsMono Nerd Font
+font-size = 12
+
+window-decoration = false
+
+keybind = super+shift+j=write_scrollback_file:paste
+keybind = super+alt+shift+j=write_scrollback_file:open
+
