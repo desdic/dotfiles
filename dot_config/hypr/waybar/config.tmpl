@@ -1,14 +1,5 @@
 // -*- mode: json -*-
 {
-    "layer": "top",
-    "margin-top": 0,
-    "margin-bottom": 0,
-
-    "height": 43,
-    "margin-left": 0,
-    "margin-right": 0,
-    "spacing": 0,
-
     // Modules Left
     "modules-left": [
         "hyprland/workspaces"
@@ -31,30 +22,51 @@
         "custom/wlogout",
         "custom/space"
     ],
+	// Workspaces
+	"hyprland/workspaces": {
+		"on-click": "activate",
+		"active-only": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"format-icons": {
+			"default": ""
+		},
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": [],
+			"5": [],
+			"6": [],
+			"7": [],
+			"8": [],
+			"9": [],
+			"0": []
+		}
+	},
 
-  // Workspaces
-  "hyprland/workspaces" : {
-    "on-click": "activate",
-    "active-only": false,
-    "all-outputs": true,
-    "format": "{icon}",
-    "format-icons": {
-       "1": "  ",
-       "2": "  ",
-       "3": "  ",
-       "4": " 4 ",
-       "5": " 5 ",
-       "6": " 6 ",
-       "7": "  ",
-       "8": "  ",
-       "9": "  ",
-       "10": "  "
-    },
-    "persistent-workspaces": {
-      "*": 3
-    }
-  },
-
+ 	// Workspaces
+	"hyprland/workspaces": {
+		"on-click": "activate",
+		"active-only": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"format-icons": {
+			"default": ""
+		},
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": [],
+			"5": [],
+			"6": [],
+			"7": [],
+			"8": [],
+			"9": [],
+			"0": []
+		}
+	},
   // Taskbar
   "wlr/taskbar": {
     "format": "{icon}",
@@ -104,25 +116,25 @@
       }
     }
   },
-
-  // CPU
-  "cpu": {
-    "format": " {usage:2}% "
-  },
-
-  // Memory
-  "memory": {
-    "format": " {}%"
-  },
-
-  // Harddisc space used
-  "disk": {
-    "interval": 30,
-    "format": " {percentage_used}% ",
-    "path": "/",
-    "on-click": "nemo"
-  }, 
-
+	// CPU
+	"cpu": {
+		"interval": 5,
+		"format": " {usage}%",
+		"max-length": 7
+	},
+	// Memory
+	"memory": {
+		"interval": 5,
+		"format": " {used:0.2f} GiB"
+	},
+	// Harddisc space used
+	"disk": {
+		"interval": 600,
+		"format": " {specific_used:0.1f} GB",
+		"unit": "GB",
+		"path": "/",
+		"on-click": "nemo"
+	},
   // Battery
   "battery": {
     "states": {
