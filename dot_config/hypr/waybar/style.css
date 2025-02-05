@@ -55,6 +55,10 @@ window#waybar {
     color: @green;
 }
 
+#workspaces button.urgent {
+    color: @red;
+}
+
 #language,#pulseaudio,#memory,#cpu,#disk,#clock,#tray{
 	padding: 6px 10px;
 }
