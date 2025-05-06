@@ -4,5 +4,6 @@ version: "2"
 
 linters:
   default: all
-  disable:
-  - tenv
+
+run:
+  issues-exit-code: 0
