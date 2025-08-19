@@ -1,0 +1,158 @@
+{
+  // Workspaces
+  "niri/workspaces" : {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent_workspaces": {
+      "*": 5
+    }
+  },
+
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+      "Alacritty"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
+
+  // Cliphist
+  "custom/cliphist": {
+    "format": "",
+    "on-click": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh",
+    "on-click-right": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh w",
+    "tooltip": false
+  },
+
+  // Wallpaper
+  "custom/wallpaper": {
+    "format": "",
+    "on-click": "~/dotfiles/hypr/scripts/wallpaper.sh select",
+    "on-click-right": "~/dotfiles/hypr/scripts/wallpaper.sh",
+    "tooltip": false
+  },
+
+  // Power Menu
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+  // System tray
+  "tray": {
+    //"icon-size": 21,
+    "spacing": 10
+  },
+
+  // Clock
+  "clock": {
+    "format": "{:%a %Y-%m-%d - %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "week",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+
+
+  // CPU
+  "cpu": {
+    "format": "C {usage:2}% "
+  },
+
+  // Memory
+  "memory": {
+    "format": "/ M {}%"
+  },
+
+  // Harddisc space used
+  "disk": {
+    "interval": 30,
+    "format": "/ D {percentage_used}% ",
+    "path": "/"
+  }, 
+
+  // Battery
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
+
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "on-click": "pavucontrol",
+    "format-icons": ["", ""],
+    "scroll-step": 0.2
+  },
+
+  "custom/nowplaying": {
+    "interval": 2,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/hypr/waybar/nowplaying.sh"
+  },
+
+  "idle_inhibitor": {
+    "format": "<span>{icon}</span>",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    },
+    "tooltip": false
+  },
+
+  "custom/newmail": {
+    "interval": 10,
+    "format": "{}",
+    "max-length": 80,
+    "escape": false,
+    "exec": "$HOME/.config/hypr/waybar/newmail"
+  },
+
+  "custom/space": {
+    "format": " ",
+    "tooltip": false
+  }
+
+}

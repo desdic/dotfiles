@@ -1,0 +1,203 @@
+{
+	// Modules Left
+	"modules-left": [
+		"niri/workspaces"
+	],
+	// Modules Center
+	"modules-center": [
+		"custom/nowplaying"
+	],
+	// Modules Right
+	"modules-right": [
+		"custom/notification",
+		"tray",
+		"idle_inhibitor",
+		"wireplumber",
+		"group/network",
+		"group/hardware",
+		"clock"
+		// "custom/wlogout",
+		// "custom/space"
+	],
+	// Workspaces
+	"niri/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"chat": "",
+			"slack": "",
+			"term": "",
+			"browser": "",
+			"music": "",
+			"laptop": "",
+
+			"default": ""
+			// "active": ""
+		}
+	},
+	// System tray
+	"tray": {
+		//"icon-size": 21,
+		"spacing": 7
+	},
+	// Clock
+	"clock": {
+		"format": " {:%a %Y-%m-%d - %H:%M}",
+		"tooltip-format": "<span size='10pt'><big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt></span>",
+		"timezone": "Europe/Copenhagen",
+		"on-click-right": "/sbin/google-chrome-stable --app=https://outlook.office.com/calendar/view/month",
+		"on-click": "/sbin/google-chrome-stable --app=https://outlook.office.com/mail",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{:%W}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		}
+	},
+	// CPU
+	"cpu": {
+		"interval": 5,
+		"format": "",
+		"max-length": 7
+	},
+	// Memory
+	"memory": {
+		"interval": 5,
+		"format": " {used:0.2f} GiB"
+	},
+	// Harddisc space used
+	"disk": {
+		"interval": 600,
+		"format": " {specific_used:0.1f} GB",
+		"unit": "GB",
+		"path": "/",
+		"on-click": "nemo"
+	},
+	// Battery
+	"battery": {
+		"interval": 30,
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon}{capacity}%",
+		"format-charging": "{icon}{capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-alt": "{icon} {time}",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		]
+	},
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-muted": "",
+		"on-click": "pavucontrol",
+		"format-icons": [
+			"",
+			""
+		],
+		"scroll-step": 0.2
+	},
+	"group/network": {
+		"orientation": "horizontal",
+		"modules": [
+			"network",
+			"network#2",
+			"network#3"
+		]
+	},
+	"network": {
+	    "interval": 5,
+	    "interface": "wlan0",
+	    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+	    "format-wifi": " {icon}",
+	    "format-disconnected": "",
+	    "tooltip": true,
+	    "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}"
+	},
+	"network#2": {
+	    "interval": 5,
+	    "interface": "eth0",
+	    "format": " {ifname}",
+	    "format-disconnected": "",
+            "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}",
+	    "tooltip": true
+	},
+	"network#3": {
+	    "interval": 5,
+	    "interface": "tun0",
+	    "format": " {ifname}",
+	    "format-disconnected": "",
+            "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}",
+	    "tooltip": true
+	},
+	"idle_inhibitor": {
+		"format": "<span>{icon}</span>",
+		"format-icons": {
+			"activated": " ",
+			"deactivated": " "
+		},
+		"tooltip": false
+	},
+	"custom/nowplaying": {
+		"interval": 2,
+		"format": "{}",
+		"max-length": 80,
+		"escape": false,
+		"exec": "$HOME/.config/niri/waybar/nowplaying.sh",
+		"tooltip": false
+	},
+	"custom/space": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "<span foreground='green'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='green'><sup></sup></span>",
+			"dnd-none": "",
+			"inhibited-notification": "<span foreground='green'><sup></sup></span>",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "<span foreground='green'><sup></sup></span>",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "sleep 0.1 && swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
+	// Group Hardware
+	"group/hardware": {
+		"orientation": "horizontal",
+		"modules": [
+			"cpu",
+			"memory",
+			"disk",
+			"battery",
+		]
+	},
+	"custom/wlogout": {
+		"format": "  {}",
+		"on-click": "/sbin/wlogout",
+		"tooltip": false
+	}
+}
