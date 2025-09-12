@@ -19,9 +19,6 @@ export BROWSER=/sbin/google-chrome-stable
 export LESS=-Xr
 
 export EDITOR="nvim"
-if [ -x "$(which nvim)" ]; then
-    alias vim="nvim"
-fi
 export VISUAL="${EDITOR}"
 export FCEDIT="${EDITOR}"
 alias view="${EDITOR} -M"
@@ -38,15 +35,20 @@ export BAT_THEME="Catppuccin Mocha"
 
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
-if [ -n "$WAYLAND_DISPLAY" ]; then
-    ssh-add -l | grep -q ED25519 || ssh-add ~/.ssh/id_rsa_onecom ~/.ssh/id_ed25519
-fi
+unsetopt share_history
+unsetopt AUTO_CD
 
 # Keyboard bindings
-bindkey -e
+# bindkey -e
+bindkey -v
 bindkey -r "\e'"
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+# bindkey -M vicmd "^V" edit-command-line
+
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+bindkey '^R' history-incremental-search-backward
 
 # Enable CTRL+x-e to edit command line
 autoload -U edit-command-line
@@ -55,8 +57,11 @@ bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 # CTRL + Arrowkeys to jump words
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+# bindkey "^[[1;5C" forward-word
+# bindkey "^[[1;5D" backward-word
+
+# Disable build-in r
+disable r
 
 # Turn ctrl+s/ctrl+q off
 setopt noflowcontrol
@@ -67,11 +72,11 @@ export WORDCHARS=''
 autoload -U select-word-style
 select-word-style bash
 
-if [ -x /sbin/oh-my-posh ]; then
-  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin_mocha.omp.json)"
-elif [ -x /sbin/starship ]; then
-  eval "$(starship init zsh)"
-fi
+ if [ -x /sbin/oh-my-posh ]; then
+   eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin_mocha.omp.json)"
+ elif [ -x /sbin/starship ]; then
+   eval "$(starship init zsh)"
+ fi
 
 if [ -d ~/.config/zsh ]; then
   for config in ~/.config/zsh/*.zsh
