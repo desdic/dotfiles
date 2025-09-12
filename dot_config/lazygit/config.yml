@@ -1,18 +1,34 @@
-os:
-  editCommand: 'floatterm'
-
-keybinding:
-  universal:
-    return: '<c-\>'
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 
 gui:
   theme:
+    activeBorderColor:
+      - '#89b4fa'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
     selectedLineBgColor:
-      - underline
-    selectedRangeBgColor:
-      - underline
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#89b4fa'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+  border: rounded
 
-git:
-  paging:
-    colorArg: never
-    pager: delta --dark --paging=never
+  authorColors:
+    '*': '#b4befe'
+
+keybinding:
+  universal:
+    suspendApp: ''
