@@ -14,7 +14,7 @@ function fzgrep() {
 
 if [ -x /sbin/fzf ]; then
   if [ -x /sbin/fd ]; then
-    export FZF_DEFAULT_COMMAND='fd --type f'
+    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
   elif [ -x /sbin/ag ]; then
     export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -f -g ''"
   else

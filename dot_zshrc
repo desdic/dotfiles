@@ -72,12 +72,6 @@ export WORDCHARS=''
 autoload -U select-word-style
 select-word-style bash
 
- if [ -x /sbin/oh-my-posh ]; then
-   eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/catppuccin_mocha.omp.json)"
- elif [ -x /sbin/starship ]; then
-   eval "$(starship init zsh)"
- fi
-
 if [ -d ~/.config/zsh ]; then
   for config in ~/.config/zsh/*.zsh
   do
@@ -89,3 +83,7 @@ export GPG_TTY=$(tty)
 export NODE_OPTIONS=--dns-result-order=ipv4first
 
 alias luamake=/home/${HOME}/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
