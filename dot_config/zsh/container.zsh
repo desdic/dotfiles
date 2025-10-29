@@ -4,9 +4,9 @@ container_fzf() {
 	# handle kitchen builds
 	KITCHENDIR=
 	if [ -e kitchen-build/.kitchen ]; then
-	  KITCHENDIR=kitchen-build/.kitchen
+		KITCHENDIR=kitchen-build/.kitchen
 	elif [ -e .kitchen ]; then
-	  KITCHENDIR=.kitchen
+		KITCHENDIR=.kitchen
 	fi
 
 	# handle kitchen in cookbooks
@@ -32,11 +32,10 @@ container_fzf() {
 	fi
 
 	# handle docker
-	if [[ -f docker-compose.yml ]]; then
-		while read -r entry; do
-			cmds+=("docker exec -it $entry /bin/bash")
-		done < <(docker ps --format '{{.Names}}')
-	fi
+	while read -r entry; do
+		cmds+=("docker exec -it $entry /bin/bash")
+		cmds+=("docker kill $entry")
+	done < <(docker ps --format '{{.Names}}')
 
 
 	local selected
