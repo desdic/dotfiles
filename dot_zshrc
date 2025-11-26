@@ -18,7 +18,7 @@ function highlight() {
 export BROWSER=/sbin/google-chrome-stable
 export LESS=-Xr
 
-export EDITOR="nvim"
+export EDITOR="vim"
 export VISUAL="${EDITOR}"
 export FCEDIT="${EDITOR}"
 alias view="${EDITOR} -M"
