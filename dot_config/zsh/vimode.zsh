@@ -25,12 +25,11 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-function zle-linie-init {
+function zle-line-init {
 	zle -K viins
 	echo -ne '\e[6 q' # Beam
 }
-
-zle -N zle-linie-init
+zle -N zle-line-init
 
 function vi-yank-clipboard {
 	zle vi-yank
