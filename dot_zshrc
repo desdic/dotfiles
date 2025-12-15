@@ -18,47 +18,23 @@ function highlight() {
 export BROWSER=/sbin/google-chrome-stable
 export LESS=-Xr
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export VISUAL="${EDITOR}"
 export FCEDIT="${EDITOR}"
 alias view="${EDITOR} -M"
 
 export LSCOLORS="Exfxcxdxbxegedabagacad"
 
-export TERMINAL='foot'
+export TERMINAL='kitty'
 
 if [ -f ~/.config/dircolors ]; then
     eval $(dircolors ~/.config/dircolors)
 fi
 
-export BAT_THEME="Catppuccin Mocha"
-
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 unsetopt share_history
 unsetopt AUTO_CD
-
-# Keyboard bindings
-# bindkey -e
-bindkey -v
-bindkey -r "\e'"
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-# bindkey -M vicmd "^V" edit-command-line
-
-bindkey -M vicmd '?' history-incremental-search-backward
-bindkey -M vicmd '/' history-incremental-search-forward
-bindkey '^R' history-incremental-search-backward
-
-# Enable CTRL+x-e to edit command line
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^xe' edit-command-line
-bindkey '^x^e' edit-command-line
-
-# CTRL + Arrowkeys to jump words
-# bindkey "^[[1;5C" forward-word
-# bindkey "^[[1;5D" backward-word
 
 # Disable build-in r
 disable r
@@ -83,7 +59,3 @@ export GPG_TTY=$(tty)
 export NODE_OPTIONS=--dns-result-order=ipv4first
 
 alias luamake=/home/${HOME}/.local/share/nvim/site/pack/packer/start/lua-language-server/3rd/luamake/luamake
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
