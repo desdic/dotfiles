@@ -1,0 +1,36 @@
+workspace "chat" {
+	open-on-output "LG Electronics LG ULTRAGEAR 106NTQD8W884"
+	layout {
+		default-column-width { proportion 0.5; }
+	}
+}
+
+workspace "slack" {
+	open-on-output "LG Electronics LG ULTRAGEAR 106NTQD8W884"
+	layout {
+        // always-center-single-column true
+		default-column-width { proportion 0.5; }
+	}
+}
+
+workspace "term" {
+	open-on-output "LG Electronics LG ULTRAGEAR 106NTQD8W884"
+}
+
+workspace "browser" {
+	open-on-output "LG Electronics LG ULTRAGEAR 106NTQD8W884"
+	layout {
+        always-center-single-column true
+    }
+}
+
+workspace "music" {
+	open-on-output "LG Electronics LG ULTRAGEAR 106NTQD8W884"
+	layout {
+		center-focused-column "always"
+	}
+}
+
+workspace "laptop" {
+	 open-on-output "eDP-1"
+}

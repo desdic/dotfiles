@@ -1,0 +1,52 @@
+output "Lenovo Group Limited 0x4146 Unknown" {
+    // off
+    mode "3840x2400@60.000"
+    scale 2.0
+    transform "normal"
+    position x=0 y=0
+
+	layout {
+		center-focused-column "never"
+
+		preset-column-widths {
+			proportion 0.5
+			proportion 1.0
+		}
+
+		default-column-width { proportion 0.5; }
+	}
+
+
+    // position x=-3840 y=0
+    // variable-refresh-rate // on-demand=true
+    // focus-at-startup
+    // background-color "#003300"
+    // backdrop-color "#001100"
+}
+
+output "LG Electronics LG ULTRAGEAR 106NTQD8W884" {
+    // off
+    mode "3440x1440@85.000"
+    transform "normal"
+    position x=1920 y=0
+    // variable-refresh-rate // on-demand=true
+    focus-at-startup
+}
+
+// Workdesk 19 {
+output "Dell Inc. DELL U2722DE 78ML9H3" {
+    focus-at-startup
+    position x=1920 y=0
+}
+output "Dell Inc. DELL U2722DE 4M6LV83" {
+  off
+}
+// }
+
+// Workdesk 25 {
+output "Dell Inc. DELL U2719DC B47GTS2" {
+  off
+}
+output "Dell Inc. DELL U2722DE 72VSS83" {
+    focus-at-startup
+}

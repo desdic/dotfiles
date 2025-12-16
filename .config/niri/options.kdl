@@ -1,0 +1,29 @@
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 10000
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+// No borders please
+prefer-no-csd
+
+screenshot-path "~/Pictures/screenshots/screenshot_from_%Y-%m-%d %H-%M-%S.png"
+
+animations {
+    // Uncomment to turn off all animations.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+}

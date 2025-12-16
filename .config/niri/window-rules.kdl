@@ -1,0 +1,83 @@
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^com\.mitchellh\.ghostty$"# 
+    open-on-workspace "term"
+    open-maximized true
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^kitty$"# 
+    open-on-workspace "term"
+    open-maximized true
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^tmux$"# 
+    open-on-workspace "term"
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    default-column-width { proportion 0.9;}
+}
+
+window-rule {
+    match app-id=r#"^kitty$"#
+    default-column-width { proportion 0.9;}
+}
+
+window-rule {
+    match app-id=r#"^foot$"#
+    default-column-width { proportion 0.9;}
+}
+
+window-rule {
+    match app-id=r#"^info\.mumble\.Mumble$"#
+    open-on-workspace "chat"
+    open-focused false
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^im\.dino\.Dino$"#
+    open-on-workspace "chat"
+    open-focused false
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^google-chrome$"#
+    open-on-workspace "browser"
+    default-column-width { proportion 0.9;}
+    open-focused false
+}
+
+window-rule {
+    match app-id=r#"^google-chrome$"#
+    default-column-width { proportion 0.9;}
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^chrome-.*\.slack\.com.*"#
+    open-on-workspace "slack"
+    open-focused false
+}
+
+// not working
+window-rule {
+    match app-id="firefox" title="Slack"
+    open-on-workspace "slack"
+    open-focused false
+}
+
+window-rule {
+    match app-id="spotify"
+    open-on-workspace "music"
+    default-column-width { proportion 0.9;}
+    open-focused false
+}
+
