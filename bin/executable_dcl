@@ -1,7 +1,0 @@
-#!/bin/bash
-
-DC=/sbin/docker-compose
-
-CONTAINER=$($DC ps --filter 'status=running' --format '{{.Service}}'|/sbin/fzf +m)
-
-${DC} exec -it "${CONTAINER}" /bin/bash

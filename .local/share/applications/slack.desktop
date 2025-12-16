@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Slack
+StartupWMClass=Slack
+Comment=Slack
+Exec=sh -c '$HOME/bin/slack.sh'
+StartupNotify=true
+Icon=slack
+Type=Application
+Categories=GNOME;GTK;Network;InstantMessaging;
+MimeType=x-scheme-handler/slack;

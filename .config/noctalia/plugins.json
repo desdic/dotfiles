@@ -1,0 +1,21 @@
+{
+    "sources": [
+        {
+            "enabled": true,
+            "name": "Official Noctalia Plugins",
+            "url": "https://github.com/noctalia-dev/noctalia-plugins"
+        }
+    ],
+    "states": {
+        "iwd": {
+            "enabled": true
+        },
+        "iwd-plugin": {
+            "enabled": false
+        },
+        "vpn-connected": {
+            "enabled": true
+        }
+    },
+    "version": 1
+}

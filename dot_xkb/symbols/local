@@ -1,9 +1,0 @@
-// See examples in /usr/share/X11/xkb/symbols
-
-//partial alphanumeric_keys
-xkb_symbols "local" {
-    key <AC01> { [ a, A, aring, Aring ] };
-    key <AD03> { [ e, E, ae, AE ] };
-    key <AD09> { [ o, O, oslash, Oslash ] };
-    key <AE04> { [ 4, dollar, EuroSign, currency ] };
-};
