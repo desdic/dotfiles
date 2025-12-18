@@ -5,3 +5,5 @@ do
   fi
 done
 export PATH
+
+export GOBIN=${HOME}/bin
