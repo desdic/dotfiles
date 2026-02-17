@@ -9,3 +9,7 @@ function set_poshcontext() {
 function highlight() {
     /usr/bin/grep -E --color=auto "$@|";
 }
+
+function mman() {
+	man $1 | bat -l man --style=-numbers
+}
