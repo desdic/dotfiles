@@ -1,0 +1,4 @@
+before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'
+timeout 550 "notify-send -a lock 'Idle, preparing to lock.'"
+timeout 600 'qs -c noctalia-shell ipc call lockScreen lock'
+timeout 650 'mmsg -d disable_monitor,eDP-1;mmsg -d disable_monitor,DP-3' resume 'mmsg -d enable_monitor,eDP-1;mmsg -d enable_monitor,DP-3;mssg -o DP-3;mssg -t 3'

@@ -1,0 +1,4 @@
+before-sleep 'qs -c noctalia-shell ipc call lockScreen lock'
+
+timeout 550 "notify-send -a lock 'Idle, preparing to lock.'"
+timeout 600 "todo"
