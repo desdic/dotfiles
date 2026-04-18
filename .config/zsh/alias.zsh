@@ -19,5 +19,3 @@ alias q='~/git/scripts/qkill.sh'
 alias vim=nvim
 alias rm='rm -i'
 alias pssh='pssh -t 0'
-alias h='cp ~/.config/hypr/conf/monitor.conf.laptop ~/.config/hypr/conf/monitor.conf;Hyprland'
-alias n='~/bin/nirisession.sh'
