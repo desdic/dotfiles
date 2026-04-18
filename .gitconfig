@@ -16,7 +16,7 @@
     resetdb = reset --soft HEAD
     pu = pull -r
     st = status --short
-    spull = ![[ -z $(git status --porcelain -uno) ]] && git pull -r || (git stash && git pull -r && git stash pop)
+	spull = "!git pull --rebase --autostash"
     lg = log --color --graph --abbrev-commit
 [push]
     # default = matching
