@@ -11,5 +11,5 @@ function highlight() {
 }
 
 function mman() {
-	man $1 | bat -l man --style=-numbers
+	man $@ | bat -l man --style=-numbers
 }
