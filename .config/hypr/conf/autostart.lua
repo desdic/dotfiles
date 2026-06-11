@@ -11,7 +11,6 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true")
 	hl.exec_cmd("qs -c noctalia-shell")
 	hl.exec_cmd("/usr/bin/dino", { workspace = 1 })
-	hl.exec_cmd("~/bin/slack.sh", { workspace = 2 })
 	hl.exec_cmd("/sbin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland", { workspace = 5 })
 	hl.exec_cmd("/usr/bin/hypridle")
 	hl.exec_cmd(
