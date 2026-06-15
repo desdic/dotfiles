@@ -2,10 +2,7 @@ local function get_monitor_name_by_description(target_desc)
 	local monitors = hl.get_monitors()
 
 	for _, mon in ipairs(monitors) do
-		if
-			(mon.description and string.find(mon.description, target_desc))
-			or (mon.serial and string.find(mon.serial, target_desc))
-		then
+		if mon.description and string.find(mon.description, target_desc) then
 			return mon.name
 		end
 	end
@@ -107,7 +104,7 @@ end
 
 local events = { "monitor.added", "monitor.removed", "config.reloaded", "hyprland.start" }
 for _, event in ipairs(events) do
-	hl.on(event, function(m)
+	hl.on(event, function(_)
 		dynamic_monitors()
 	end)
 end
