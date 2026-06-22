@@ -14,6 +14,7 @@ hl.window_rule({
 		class = "im.dino.Dino",
 	},
 	workspace = 1,
+	no_initial_focus = true,
 })
 
 hl.window_rule({
@@ -46,4 +47,5 @@ hl.window_rule({
 		class = "Spotify",
 	},
 	workspace = 5,
+	no_initial_focus = true,
 })
