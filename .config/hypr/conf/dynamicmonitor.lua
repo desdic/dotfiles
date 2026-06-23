@@ -59,7 +59,7 @@ local function identify_setup()
 				hl.monitor({
 					output = "desc:Lenovo Group Limited 0x4146",
 					mode = "3840x2400@60",
-					position = "0x0",
+					position = "0x1440",
 					scale = "1.5",
 				})
 
@@ -69,14 +69,14 @@ local function identify_setup()
 				hl.monitor({
 					output = "desc:Dell Inc. DELL U2722DE 78ML9H3",
 					mode = "2560x1440@60",
-					position = "1920x0",
+					position = "0x0",
 					scale = "1",
 				})
 
 				hl.monitor({
 					output = "desc:Dell Inc. DELL U2722DE 4M6LV83",
 					mode = "2560x1440@60",
-					position = "4480x0",
+					position = "2560x0",
 					scale = "1",
 				})
 			end
