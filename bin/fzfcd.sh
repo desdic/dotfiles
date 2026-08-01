@@ -6,14 +6,13 @@ if [ -n "$DIR" ]; then
 		cd $DIR
 	fi
 
-	echo "hello"
 	if [ -n "$TMUX" ]; then
 		SHORT=$(echo $PWD|rev|cut -d '/' -f-2|rev|tr . _)
 		tmux rename-window -- "${SHORT}"
 	elif [ -n "$HERDR_ENV" ]; then
 		SHORT=$(echo $PWD|rev|cut -d '/' -f-2|rev)
 		herdr pane rename "${HERDR_PANE_ID}" "${SHORT}" > /dev/null
-		herdr tab rename "${HERDR_TAB_ID}" "${SHORT}" > /dev/null
+		# herdr tab rename "${HERDR_TAB_ID}" "${SHORT}" > /dev/null
 	fi
 
 fi
