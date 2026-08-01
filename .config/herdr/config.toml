@@ -133,8 +133,8 @@ split_horizontal = "prefix+minus"
 key = "prefix+alt+g"
 type = "pane"
 command = "lazygit"
-width = "80%"
-height = "80%"
+# width = "80%"
+# height = "80%"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
