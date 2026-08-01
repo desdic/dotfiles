@@ -6,6 +6,7 @@
 local terminal = "kitty"
 local menu = "fuzzel"
 local screenshot = "~/bin/screenshot.sh"
+local ipc = "noctalia msg "
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -17,7 +18,10 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + Space", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SHIFT+d", hl.dsp.exec_cmd(menu))
+
+hl.bind(mainMod .. "+D", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+
 hl.bind("Print", hl.dsp.exec_cmd(screenshot))
 
 -- Move focus with mainMod + arrow keys
@@ -38,6 +42,8 @@ for i = 1, 10 do
 end
 
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle"))
+
+hl.bind(mainMod .. "+SHIFT+CTRL+L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
