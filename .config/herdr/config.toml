@@ -21,7 +21,7 @@ name = "catppuccin"
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
 # [theme.custom]
-# panel_bg = "reset"
+#panel_bg = "reset"
 # accent = "#f5c2e7"
 # red = "#ff6188"
 # green = "#a6e3a1"
@@ -47,7 +47,7 @@ name = "catppuccin"
 # channel = "stable"
 
 # Check herdr.dev for new Herdr versions in the background.
-# version_check = true
+version_check = false
 
 # Check herdr.dev for remote agent-detection manifest updates in the background.
 # manifest_check = true
@@ -136,6 +136,30 @@ command = "lazygit"
 # width = "80%"
 # height = "80%"
 
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
@@ -199,6 +223,7 @@ sidebar_start_collapsed = true
 # Ask for a tab name before creating a new tab.
 # Set false to create tabs immediately with generated names.
 # prompt_new_tab_name = true
+prompt_new_tab_name = false
 
 # Ask for a workspace name before interactive creation.
 # prompt_new_workspace_name = false
@@ -261,6 +286,7 @@ delivery = "system"
 [ui.toast.clipboard]
 # enabled = true
 # position = "bottom-center"
+enabled = false
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
