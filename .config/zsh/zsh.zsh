@@ -1,6 +1,9 @@
 unsetopt share_history
 unsetopt AUTO_CD
 
+setopt NOBEEP
+setopt NUMERIC_GLOB_SORT
+
 # Disable build-in r
 disable r
 
