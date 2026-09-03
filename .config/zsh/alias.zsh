@@ -18,4 +18,5 @@ alias b='cd ~/notes'
 alias q='~/git/scripts/qkill.sh'
 alias vim=nvim
 alias rm='rm -i'
+alias r='runningsushi.sh'
 alias pssh='pssh -t 0'
