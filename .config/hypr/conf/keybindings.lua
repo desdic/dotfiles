@@ -79,10 +79,6 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl -p spotify play-pause"), { 
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl -p spotify play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl -p spotify previous"), { locked = true })
 
-hl.bind(mainMod .. "+SHIFT+Z", hl.dsp.exec_cmd("/home/kgn/bin/togglemumble.sh"), {
-	description = "Mumble Start Talk",
-})
-
 -- Example special workspace (scratchpad)
 -- hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
@@ -92,3 +88,29 @@ hl.bind(mainMod .. "+SHIFT+Z", hl.dsp.exec_cmd("/home/kgn/bin/togglemumble.sh"),
 
 hl.bind(mainMod .. " + SHIFT+P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + SHIFT+T", hl.dsp.layout("togglesplit")) -- dwindle only
+
+-- Mumble push to talk
+local state = {
+	is_held = false,
+}
+
+hl.bind("SUPER + Z", function()
+	if state.is_held then
+		return
+	end
+
+	state.is_held = true
+
+	hl.dispatch(
+		hl.dsp.exec_cmd(
+			"mumble rpc unmute; mumble rpc undeaf; gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.startTalking"
+		)
+	)
+end)
+
+hl.bind("SUPER + Z", function()
+	-- Reset state for the next keypress cycle
+	state.is_held = false
+
+	hl.dispatch(hl.dsp.exec_cmd("~/bin/stopmumble.sh"))
+end, { release = true })
