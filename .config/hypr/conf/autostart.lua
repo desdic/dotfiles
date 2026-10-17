@@ -14,9 +14,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("[workspace 1 silent] /usr/bin/dino")
 	hl.exec_cmd("[workspace 5 silent] /sbin/spotify --enable-features=UseOzonePlatform --ozone-platform=wayland")
 	hl.exec_cmd("/usr/bin/hypridle")
-	-- hl.exec_cmd(
-	-- 	'/sbin/kitty --app-id=tmux --directory "$HOME/git/chef-repo" tmux new-session -A -s chef-repo',
-	-- 	{ workspace = 3 }
-	-- )
-	hl.exec_cmd("/sbin/kitty --app-id=herdr /usr/bin/herdr", { workspace = 3 })
+	hl.exec_cmd(
+		'/sbin/kitty --app-id=tmux --directory "$HOME/git/chef-repo" tmux new-session -A -s chef-repo',
+		{ workspace = 3 }
+	)
+	-- hl.exec_cmd("/sbin/kitty --app-id=herdr /usr/bin/herdr", { workspace = 3 })
 end)
