@@ -71,6 +71,9 @@ rename_pane = "prefix+;"
 split_vertical = "prefix+|"
 split_horizontal = "prefix+minus"
 
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
@@ -182,7 +185,6 @@ description = "navigate right (vim/herdr)"
 
 # Start with the sidebar collapsed. Changes take effect on the next launch.
 # sidebar_start_collapsed = false
-sidebar_start_collapsed = true
 
 # Collapsed sidebar presentation: "compact" keeps the narrow status rail, "hidden" uses zero width.
 # sidebar_collapsed_mode = "compact"
@@ -271,6 +273,7 @@ prompt_new_tab_name = false
 # accent = "cyan"
 
 # Background notification popup delivery
+status_indicators = "dots"
 [ui.toast]
 delivery = "system"
 # off = disable pop-up notifications
