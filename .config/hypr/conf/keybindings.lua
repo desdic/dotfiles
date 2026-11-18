@@ -101,11 +101,10 @@ hl.bind("SUPER + Z", function()
 
 	state.is_held = true
 
-	hl.dispatch(
-		hl.dsp.exec_cmd(
-			"mumble rpc unmute; mumble rpc undeaf; gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.startTalking"
-		)
-	)
+	hl.dispatch(hl.dsp.exec_cmd(
+		-- "gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.setSelfMuted false; gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.setSelfDeaf false; gdbus call -e -d net.sourceforge.mumble.mumble -o / -m net.sourceforge.mumble.Mumble.startTalking"
+		"~/bin/pushtotalkmumble.sh"
+	))
 end)
 
 hl.bind("SUPER + Z", function()
