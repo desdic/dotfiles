@@ -11,7 +11,7 @@ if [ -n "$DIR" ]; then
 		tmux rename-window -- "${SHORT}"
 	elif [ -n "$HERDR_ENV" ]; then
 		SHORT=$(echo $PWD|rev|cut -d '/' -f-2|rev)
-		herdr pane rename "${HERDR_PANE_ID}" "${SHORT}" > /dev/null
+		# herdr pane rename "${HERDR_PANE_ID}" "${SHORT}" > /dev/null
 		PANE_COUNT=$(herdr tab get "$HERDR_TAB_ID"|jq .result.tab.pane_count)
 		if [ "$PANE_COUNT" -eq 1 ]; then
 			herdr tab rename "${HERDR_TAB_ID}" "${SHORT}" > /dev/null
